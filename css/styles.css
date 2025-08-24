@@ -35,3 +35,33 @@ body {
 .delay-200 {
     transition-delay: 200ms;
 }
+
+/* Estilos para el Menú Móvil (CORREGIDOS SIN @APPLY) */
+.mobile-menu {
+    position: absolute;
+    top: 5rem; /* Equivalente a top-20 */
+    left: 0;
+    width: 100%;
+    background-color: #1e293b; /* Equivalente a bg-slate-800 */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Oculta el menú móvil en pantallas grandes (más de 768px) */
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem; /* Equivalente a py-8 */
+    padding-bottom: 2rem;
+}
+
+/* Agrega espacio entre los elementos del menú móvil */
+.mobile-menu ul > * + * {
+    margin-top: 1rem; /* Equivalente a space-y-4 */
+}

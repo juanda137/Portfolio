@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             job_2_desc_2: "Built a RESTful API to connect the frontend with the server and the MongoDB database.",
             // Footer (común)
             footer_contact: "Get in touch:",
-            footer_copy: "&copy; 2024 Your Name. All Rights Reserved."
+            footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. All Rights Reserved.`
         },
         // Textos en Español
         es: {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             job_2_desc_2: "Construí una API RESTful para la comunicación entre el frontend y el servidor con la base de datos MongoDB.",
             // Footer (común)
             footer_contact: "Ponte en contacto:",
-            footer_copy: "&copy; 2024 Tu Nombre. Todos los derechos reservados."
+            footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. Todos los derechos reservados.`
         }
     };
 
@@ -129,4 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (mobileMenuButton && navMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            // Alterna las clases de Tailwind para mostrar/ocultar el menú
+            navMenu.classList.toggle('hidden');
+            // También alterna nuestras clases personalizadas para el estilo móvil
+            navMenu.classList.toggle('mobile-menu');
+        });
+    }
 });

@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education - Your Name</title>
+    <title>Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body class="bg-slate-900 text-slate-300">
     <div class="container mx-auto px-4 md:px-8">
         <header class="py-6">
             <nav class="flex justify-between items-center">
                 <a href="../index.html" class="text-2xl font-bold text-white" data-key="name"></a>
                 <ul class="hidden md:flex items-center space-x-8">
-                    <li><a href="../index.html" class="text-white hover:text-cyan-400 transition duration-300" data-key="nav_home"></a></li>
-                    <li><a href="../pages/education.html" class="text-cyan-400 font-semibold border-b-2 border-cyan-400 pb-1" data-key="nav_education"></a></li>
-                    <li><a href="../pages/experience.html" class="text-white hover:text-cyan-400 transition duration-300" data-key="nav_experience"></a></li>
-                    <li><button id="lang-toggle" class="bg-cyan-500 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-cyan-600 transition-colors"></button></li>
+                    <li><a href="../index.html" class="text-white hover:text-cyan-400 transition duration-300"
+                            data-key="nav_home"></a></li>
+                    <li><a href="../pages/education.html"
+                            class="text-cyan-400 font-semibold border-b-2 border-cyan-400 pb-1"
+                            data-key="nav_education"></a></li>
+                    <li><a href="../pages/experience.html"
+                            class="text-white hover:text-cyan-400 transition duration-300"
+                            data-key="nav_experience"></a></li>
+                    <li><button id="lang-toggle"
+                            class="bg-cyan-500 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-cyan-600 transition-colors"></button>
+                    </li>
                 </ul>
-                <button class="md:hidden text-white"></button>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
             </nav>
         </header>
 
         <main class="py-16 md:py-24">
-            <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-on-scroll" data-key="education_title"></h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-on-scroll"
+                data-key="education_title"></h1>
             <div class="max-w-4xl mx-auto space-y-10">
                 <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll">
                     <p class="text-slate-400 mb-1">Nov 2024 - Oct 2025</p>
                     <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_1"></h2>
                     <p class="text-lg text-slate-300">Campuslands, Bogota</p>
                 </div>
-                <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-100">
+                <div
+                    class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-100">
                     <p class="text-slate-400 mb-1">Jan - Dec 2024</p>
                     <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_2"></h2>
                     <p class="text-lg text-slate-300">Coderhouse</p>
                 </div>
-                <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-200">
+                <div
+                    class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-200">
                     <p class="text-slate-400 mb-1">2023</p>
                     <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_3"></h2>
                     <p class="text-lg text-slate-300">Liceo el Encuentro</p>
@@ -46,16 +64,19 @@
             </div>
 
             <section id="diplomas" class="mt-20 md:mt-28 text-center">
-                <h2 class="text-3xl font-bold text-white text-center mb-8 animate-on-scroll" data-key="diplomas_title"></h2>
+                <h2 class="text-3xl font-bold text-white text-center mb-8 animate-on-scroll" data-key="diplomas_title">
+                </h2>
                 <p class="text-slate-400 max-w-2xl mx-auto animate-on-scroll" data-key="diplomas_text"></p>
                 <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-slate-800 h-48 rounded-lg flex items-center justify-center animate-on-scroll">
                         <p class="text-slate-500" data-key="diploma_placeholder_1"></p>
                     </div>
-                    <div class="bg-slate-800 h-48 rounded-lg flex items-center justify-center animate-on-scroll delay-100">
+                    <div
+                        class="bg-slate-800 h-48 rounded-lg flex items-center justify-center animate-on-scroll delay-100">
                         <p class="text-slate-500" data-key="diploma_placeholder_2"></p>
                     </div>
-                    <div class="bg-slate-800 h-48 rounded-lg flex items-center justify-center animate-on-scroll delay-200">
+                    <div
+                        class="bg-slate-800 h-48 rounded-lg flex items-center justify-center animate-on-scroll delay-200">
                         <p class="text-slate-500" data-key="diploma_placeholder_3"></p>
                     </div>
                 </div>
@@ -64,13 +85,17 @@
         <footer class="text-center py-8 mt-16 border-t border-slate-700">
             <p class="text-slate-400 mb-4" data-key="footer_contact"></p>
             <div class="flex justify-center space-x-6">
-                <a href="www.linkedin.com/in/juan-david-benavides" class="text-slate-400 hover:text-cyan-400 transition duration-300">LinkedIn</a>
-                <a href="https://github.com/juanda137" class="text-slate-400 hover:text-cyan-400 transition duration-300">GitHub</a>
-                <a href="juanda.benavidesf@gmail.com" class="text-slate-400 hover:text-cyan-400 transition duration-300">Email</a>
+                <a href="https://www.linkedin.com/in/juan-david-benavides"
+                    class="text-slate-400 hover:text-cyan-400 transition duration-300">LinkedIn</a>
+                <a href="https://github.com/juanda137"
+                    class="text-slate-400 hover:text-cyan-400 transition duration-300">GitHub</a>
+                <a href="mailto:juanda.benavidesf@gmail.com"
+                    class="text-slate-400 hover:text-cyan-400 transition duration-300">Email</a>
             </div>
             <p class="text-slate-500 mt-6 text-sm" data-key="footer_copy"></p>
         </footer>
     </div>
     <script src="../script/main.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Your Name</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-slate-900 text-slate-300">
+    <div class="container mx-auto px-4 md:px-8">
+        <header class="py-6">
+            <nav class="flex justify-between items-center">
+                <a href="./index.html" class="text-2xl font-bold text-white" data-key="name"></a>
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="./index.html" class="text-white hover:text-cyan-400 transition duration-300" data-key="nav_home"></a></li>
+                    <li><a href="./education.html" class="text-white hover:text-cyan-400 transition duration-300" data-key="nav_education"></a></li>
+                    <li><a href="./experience.html" class="text-cyan-400 font-semibold border-b-2 border-cyan-400 pb-1" data-key="nav_experience"></a></li>
+                    <li><button id="lang-toggle" class="bg-cyan-500 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-cyan-600 transition-colors"></button></li>
+                </ul>
+                <button class="md:hidden text-white"></button>
+            </nav>
+        </header>
+
+        <main class="py-16 md:py-24">
+            <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-on-scroll" data-key="experience_title"></h1>
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="bg-slate-800 p-8 rounded-xl shadow-lg animate-on-scroll">
+                    <h2 class="text-2xl font-semibold text-white mb-1" data-key="job_1_title"></h2>
+                    <p class="text-lg text-slate-400 mb-4">Campuslands</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li data-key="job_1_desc_1"></li>
+                        <li data-key="job_1_desc_2"></li>
+                    </ul>
+                    <div class="mt-6">
+                        <h4 class="font-semibold text-white mb-3" data-key="tech_title"></h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">Express</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-xl shadow-lg animate-on-scroll" style="transition-delay: 100ms;">
+                    <h2 class="text-2xl font-semibold text-white mb-1" data-key="job_2_title"></h2>
+                    <p class="text-lg text-slate-400 mb-4">Campuslands</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li data-key="job_2_desc_1"></li>
+                        <li data-key="job_2_desc_2"></li>
+                    </ul>
+                    <div class="mt-6">
+                        <h4 class="font-semibold text-white mb-3" data-key="tech_title"></h4>
+                        <div class="flex flex-wrap gap-2">
+                             <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">Express</span>
+                            <span class="bg-slate-700 text-cyan-300 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center py-8 mt-16 border-t border-slate-700">
+             <p class="text-slate-400 mb-4" data-key="footer_contact"></p>
+            <div class="flex justify-center space-x-6">
+                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition duration-300">LinkedIn</a>
+                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition duration-300">GitHub</a>
+                 <a href="mailto:your.email@example.com" class="text-slate-400 hover:text-cyan-400 transition duration-300">Email</a>
+            </div>
+            <p class="text-slate-500 mt-6 text-sm" data-key="footer_copy"></p>
+        </footer>
+    </div>
+    <script src="../script/main.js"></script>
+</body>
+</html>

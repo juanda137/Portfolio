@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         // Textos en Inglés
         en: {
-            name: "Your Name",
+            name: "Juan David Benavides",
             nav_home: "Home",
             nav_education: "Education",
             nav_experience: "Experience",
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         // Textos en Español
         es: {
-            name: "Tu Nombre",
+            name: "Juan David Benavides",
             nav_home: "Inicio",
             nav_education: "Educación",
             nav_experience: "Experiencia",
@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const elements = document.querySelectorAll('[data-key]');
         elements.forEach(element => {
             const key = element.getAttribute('data-key');
-            // Usamos una clave genérica para los placeholders repetidos
             const translationKey = (key.startsWith("diploma_placeholder_")) ? "diploma_placeholder" : key;
             const translationText = translations[lang][translationKey];
 
@@ -97,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.documentElement.lang = lang;
         if(langToggleButton) {
-            langToggleButton.textContent = lang === 'en' ? 'Español' : 'English';
+            // --- LÍNEA CORREGIDA ---
+            // Ahora el botón muestra el idioma actual
+            langToggleButton.textContent = lang === 'en' ? 'English' : 'Español';
         }
         localStorage.setItem('lang', lang);
     };

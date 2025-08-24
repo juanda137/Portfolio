@@ -2,12 +2,14 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+body.overflow-hidden {
+    overflow: hidden;
+}
 
 /* Estilos para las etiquetas de habilidades */
 .skill-tag {
     transition: all 0.2s ease-in-out;
 }
-
 .skill-tag:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
@@ -21,7 +23,6 @@ body {
     transition-duration: 0.6s;
     transition-timing-function: ease-out;
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -31,37 +32,66 @@ body {
 .delay-100 {
     transition-delay: 100ms;
 }
-
 .delay-200 {
     transition-delay: 200ms;
 }
 
-/* Estilos para el Menú Móvil (CORREGIDOS SIN @APPLY) */
-.mobile-menu {
-    position: absolute;
-    top: 5rem; /* Equivalente a top-20 */
+
+/* === ESTILOS PARA EL MENÚ LATERAL === */
+
+/* Capa de superposición que oscurece el fondo */
+.menu-overlay {
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: #1e293b; /* Equivalente a bg-slate-800 */
-    text-align: center;
-    transition: all 0.3s ease-in-out;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.menu-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
 }
 
-/* Oculta el menú móvil en pantallas grandes (más de 768px) */
+/* El menú de navegación (Contenedor UL) */
+.nav-menu {
+    /* Por defecto, está oculto en móvil y se muestra en escritorio */
+    display: none;
+}
+
+/* Estilos para el menú de escritorio (pantallas de más de 768px) */
 @media (min-width: 768px) {
-    .mobile-menu {
-        display: none;
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem; /* space-x-8 */
     }
 }
 
-.mobile-menu ul {
-    display: flex;
-    flex-direction: column;
-    padding-top: 2rem; /* Equivalente a py-8 */
-    padding-bottom: 2rem;
-}
+/* Estilos para el menú lateral en móviles (pantallas de menos de 767px) */
+@media (max-width: 767px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: #1e293b; /* bg-slate-800 */
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1rem;
+        gap: 1.5rem;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
 
-/* Agrega espacio entre los elementos del menú móvil */
-.mobile-menu ul > * + * {
-    margin-top: 1rem; /* Equivalente a space-y-4 */
+    .nav-menu.is-open {
+        right: 0;
+    }
 }

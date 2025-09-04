@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
             job_3_company: "Personal Project",
             job_3_desc_1: "Full-stack web application designed for comprehensive management of a movie theater chain.",
             job_3_desc_2: "Developed a robust backend with Node.js and Express, with a dynamic single-page frontend (SPA) using native HTML, CSS, and JavaScript.",
+            job_4_title: "Payroll Management System",
+            job_4_company: "Personal Project",
+            job_4_desc_1: "Node.js console application for payroll management and reporting.",
+            job_4_desc_2: "Loads data from CSV files, processes it, and stores it in MongoDB. Generates HTML reports using worker_threads for efficient processing.",
             footer_contact: "Get in touch:",
             footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. All Rights Reserved.`
         },
@@ -60,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
             job_3_company: "Proyecto Personal",
             job_3_desc_1: "Aplicación web full-stack para la gestión integral de una cadena de cines.",
             job_3_desc_2: "Desarrollé un backend robusto con Node.js y Express, con un frontend dinámico de una sola página (SPA) usando HTML, CSS y JavaScript nativo.",
+            job_4_title: "Sistema de Gestión de Nóminas",
+            job_4_company: "Proyecto Personal",
+            job_4_desc_1: "Aplicación de consola en Node.js para la gestión y reportería de nóminas.",
+            job_4_desc_2: "Carga datos desde archivos CSV, los procesa y los almacena en MongoDB. Genera reportes en formato HTML utilizando worker_threads para un procesamiento eficiente.",
             footer_contact: "Ponte en contacto:",
             footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. Todos los derechos reservados.`
         }

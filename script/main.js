@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_home: "Inicio",
             nav_education: "Educación",
             nav_experience: "Experiencia",
-            hero_title: "Soy Desarrollador de Software",
+            hero_title: "Soy un Desarrollador de Software",
             hero_subtitle: "Apasionado por transformar ideas en soluciones funcionales y eficientes. Soy una persona proactiva y resolutiva que prospera en entornos colaborativos, en búsqueda activa de una oportunidad para aportar valor y crecer profesionalmente dentro de un equipo de desarrollo innovador.",
             skills_title: "Habilidades y Competencias",
             tech_skills_title: "Habilidades Técnicas",

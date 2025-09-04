@@ -95,3 +95,16 @@ body.overflow-hidden {
         right: 0;
     }
 }
+
+/* === ESTILOS PARA LAS IMÁGENES DE CERTIFICADOS === */
+.certificate-image {
+    background-size: contain; /* Asegura que toda la imagen sea visible */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el contenedor */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.certificate-image:hover {
+    transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
+}

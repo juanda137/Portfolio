@@ -63,6 +63,11 @@ body.overflow-hidden {
     display: none;
 }
 
+#div-experience {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Estilos para el menú de escritorio (pantallas de más de 768px) */
 @media (min-width: 768px) {
     .nav-menu {

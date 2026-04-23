@@ -6,16 +6,16 @@ body.overflow-hidden {
     overflow: hidden;
 }
 
-/* Estilos para las etiquetas de habilidades */
+/* Etiquetas de habilidades */
 .skill-tag {
     transition: all 0.2s ease-in-out;
 }
 .skill-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos para la animación de entrada al hacer scroll */
+/* Animación de entrada al hacer scroll */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);
@@ -28,18 +28,41 @@ body.overflow-hidden {
     transform: translateY(0);
 }
 
-/* Clases para el retardo de la animación */
-.delay-100 {
-    transition-delay: 100ms;
+/* Retardos de animación */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* === BADGE "CURRENT / ACTUAL" === */
+.badge-current {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: rgb(52, 211, 153);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
-.delay-200 {
-    transition-delay: 200ms;
+.badge-current::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgb(52, 211, 153);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
 }
 
-
-/* === ESTILOS PARA EL MENÚ LATERAL === */
-
-/* Capa de superposición que oscurece el fondo */
+/* === MENÚ LATERAL MÓVIL === */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -57,27 +80,18 @@ body.overflow-hidden {
     visibility: visible;
 }
 
-/* El menú de navegación (Contenedor UL) */
 .nav-menu {
-    /* Por defecto, está oculto en móvil y se muestra en escritorio */
     display: none;
 }
 
-#div-experience {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Estilos para el menú de escritorio (pantallas de más de 768px) */
 @media (min-width: 768px) {
     .nav-menu {
         display: flex;
         align-items: center;
-        gap: 2rem; /* space-x-8 */
+        gap: 2rem;
     }
 }
 
-/* Estilos para el menú lateral en móviles (pantallas de menos de 767px) */
 @media (max-width: 767px) {
     .nav-menu {
         position: fixed;
@@ -86,7 +100,7 @@ body.overflow-hidden {
         width: 75%;
         max-width: 300px;
         height: 100vh;
-        background-color: #1e293b; /* bg-slate-800 */
+        background-color: #1e293b;
         z-index: 100;
         display: flex;
         flex-direction: column;
@@ -95,21 +109,15 @@ body.overflow-hidden {
         gap: 1.5rem;
         transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
     .nav-menu.is-open {
         right: 0;
     }
 }
 
-/* === ESTILOS PARA LAS IMÁGENES DE CERTIFICADOS === */
+/* === IMÁGENES DE CERTIFICADOS === */
 .certificate-image {
-    background-size: contain; /* Asegura que toda la imagen sea visible */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; /* Centra la imagen en el contenedor */
-    width: 100%;
-    height: 100%;
     transition: transform 0.3s ease-in-out;
 }
 .certificate-image:hover {
-    transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
+    transform: scale(1.05);
 }

@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg-slate-900 text-slate-300">
@@ -17,8 +17,8 @@
     <div class="container mx-auto px-4 md:px-8">
         <header class="py-6">
             <nav class="flex justify-between items-center">
-                <a href="../index.html" class="text-2xl font-bold text-white" data-key="name"></a>
-                
+                <a href="../index.html" class="text-xl font-bold text-white" data-key="name"></a>
+
                 <ul id="nav-menu" class="nav-menu">
                     <li class="w-full flex justify-end p-4 md:hidden">
                         <button id="close-menu-button" class="text-white">
@@ -43,35 +43,38 @@
 
         <main class="py-16 md:py-24">
             <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-on-scroll" data-key="education_title"></h1>
-            <div class="max-w-4xl mx-auto space-y-10">
+
+            <div class="max-w-4xl mx-auto space-y-6">
+
+                <!-- Campuslands -->
                 <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll">
-                    <p class="text-slate-400 mb-1">Nov 2024 - Oct 2025</p>
-                    <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_1"></h2>
-                    <p class="text-lg text-slate-300">Campuslands, Bogota</p>
+                    <p class="text-slate-500 text-sm mb-1">Nov 2024 – Aug 2025</p>
+                    <h2 class="text-xl md:text-2xl font-semibold text-white mb-2" data-key="degree_1"></h2>
+                    <p class="text-slate-400">Campuslands · Bogotá, Colombia</p>
                 </div>
+
+                <!-- Coderhouse -->
                 <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-100">
-                    <p class="text-slate-400 mb-1">Jan - Dec 2024</p>
-                    <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_2"></h2>
-                    <p class="text-lg text-slate-300">Coderhouse</p>
+                    <p class="text-slate-500 text-sm mb-1">Jan 2024 – Jan 2025</p>
+                    <h2 class="text-xl md:text-2xl font-semibold text-white mb-2" data-key="degree_2"></h2>
+                    <p class="text-slate-400">Coderhouse · Virtual</p>
                 </div>
-                <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-cyan-500 animate-on-scroll delay-200">
-                    <p class="text-slate-400 mb-1">2023</p>
-                    <h2 class="text-2xl font-semibold text-white mb-2" data-key="degree_3"></h2>
-                    <p class="text-lg text-slate-300">Liceo el Encuentro</p>
-                </div>
+
             </div>
 
+            <!-- Certificates -->
             <section id="diplomas" class="mt-20 md:mt-28 text-center">
-                <h2 class="text-3xl font-bold text-white text-center mb-8 animate-on-scroll" data-key="diplomas_title"></h2>
-                <p class="text-slate-400 max-w-2xl mx-auto animate-on-scroll" data-key="diplomas_text"></p>
-                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <img src="../images/backend.png" alt="Certificado de Programación Backend I" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll">
-                    <img src="../images/javascript.png" alt="Certificado de JavaScript" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll" data-key="diplomas_title"></h2>
+                <p class="text-slate-400 max-w-xl mx-auto mb-10 animate-on-scroll" data-key="diplomas_text"></p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     <img src="../images/desarrolloWeb.png" alt="Certificado de Desarrollo Web" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll">
-                    <img src="../images/reactDiploma.png" alt="Certificado de React.js" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll">
+                    <img src="../images/javascript.png" alt="Certificado de JavaScript" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll delay-100">
+                    <img src="../images/backend.png" alt="Certificado de Backend" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll delay-200">
+                    <img src="../images/reactDiploma.png" alt="Certificado de React.js" class="certificate-image w-full h-auto rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-on-scroll delay-300">
                 </div>
             </section>
         </main>
+
         <footer class="text-center py-8 mt-16 border-t border-slate-700">
             <p class="text-slate-400 mb-4" data-key="footer_contact"></p>
             <div class="flex justify-center space-x-6">
@@ -82,6 +85,7 @@
             <p class="text-slate-500 mt-6 text-sm" data-key="footer_copy"></p>
         </footer>
     </div>
+
     <script src="../script/main.js"></script>
 </body>
 </html>

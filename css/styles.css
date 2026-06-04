@@ -1,123 +1,91 @@
-/* Estilos Generales */
+/* === BASE === */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #000;
 }
 body.overflow-hidden {
     overflow: hidden;
 }
 
-/* Etiquetas de habilidades */
-.skill-tag {
-    transition: all 0.2s ease-in-out;
-}
-.skill-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Animación de entrada al hacer scroll */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition-property: opacity, transform;
-    transition-duration: 0.6s;
-    transition-timing-function: ease-out;
-}
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Retardos de animación */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-
-/* === BADGE "CURRENT / ACTUAL" === */
-.badge-current {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background-color: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    color: rgb(52, 211, 153);
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-.badge-current::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: rgb(52, 211, 153);
-    animation: pulse-dot 2s ease-in-out infinite;
-    flex-shrink: 0;
-}
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.75); }
-}
-
-/* === MENÚ LATERAL MÓVIL === */
-.menu-overlay {
+/* === SCANLINE / CRT OVERLAYS === */
+.scanline-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
-.menu-overlay.is-visible {
-    opacity: 1;
-    visibility: visible;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-.nav-menu {
-    display: none;
+.crt-flicker {
+    animation: crt-flicker 0.15s infinite;
+}
+@keyframes crt-flicker {
+    0%   { opacity: 0.95; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.98; }
 }
 
-@media (min-width: 768px) {
-    .nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
+/* === ANGLED CORNER CLIP === */
+.clip-corner {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
-@media (max-width: 767px) {
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background-color: #1e293b;
-        z-index: 100;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 1rem;
-        gap: 1.5rem;
-        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .nav-menu.is-open {
-        right: 0;
-    }
+/* === GLITCH HOVER === */
+.glitch-hover:hover {
+    animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+    background-color: #00ff66;
+    color: #000;
+}
+@keyframes glitch {
+    0%   { transform: translate(0); }
+    20%  { transform: translate(-2px, 1px); }
+    40%  { transform: translate(-1px, -1px); }
+    60%  { transform: translate(2px, 1px); }
+    80%  { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
 }
 
-/* === IMÁGENES DE CERTIFICADOS === */
-.certificate-image {
-    transition: transform 0.3s ease-in-out;
+/* === TYPEWRITER (view title) === */
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid #00ff66;
+    white-space: nowrap;
+    letter-spacing: .08em;
+    animation: typing 1.6s steps(40, end), blink-caret .75s step-end infinite;
 }
-.certificate-image:hover {
-    transform: scale(1.05);
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 100%; }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50%      { border-color: #00ff66; }
+}
+
+/* === HIDDEN SCROLLBARS === */
+.scroll-hidden::-webkit-scrollbar { display: none; }
+.scroll-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* === SPA VIEW VISIBILITY === */
+.view-content { display: none; }
+.view-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === ANIMATED VITAL BARS === */
+.vital-bar {
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }

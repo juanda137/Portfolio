@@ -333,8 +333,37 @@
                 </div>
             </div>
 
-            <!-- EDUCATION VIEW (filled in Task 7) -->
-            <div class="view-content relative z-10 flex-1" id="view-education"></div>
+            <!-- EDUCATION VIEW -->
+            <div class="view-content relative z-10 flex-1" id="view-education">
+                <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="education_title"></h2>
+                <div class="space-y-4 font-code-snippet text-sm text-inverse-surface mb-10">
+                    <div class="flex items-start gap-4 border-l-2 border-primary-fixed-dim pl-4 py-2 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-primary-fixed-dim mt-1">school</span>
+                        <div>
+                            <div class="font-bold text-primary-fixed-dim" data-key="degree_1"></div>
+                            <div class="text-xs text-on-surface-variant mt-1" data-key="degree_1_place"></div>
+                            <div class="text-xs text-on-surface-variant/70" data-key="degree_1_period"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 border-l-2 border-secondary-fixed-dim pl-4 py-2 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-secondary-fixed-dim mt-1">terminal</span>
+                        <div>
+                            <div class="font-bold text-secondary-fixed-dim" data-key="degree_2"></div>
+                            <div class="text-xs text-on-surface-variant mt-1" data-key="degree_2_place"></div>
+                            <div class="text-xs text-on-surface-variant/70" data-key="degree_2_period"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 border-b border-outline-variant pb-2" data-key="diplomas_title"></h2>
+                <p class="font-code-snippet text-xs text-on-surface-variant mb-4" data-key="diplomas_text"></p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <img src="./images/desarrolloWeb.png" alt="Certificado de Desarrollo Web" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
+                    <img src="./images/javascript.png" alt="Certificado de JavaScript" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
+                    <img src="./images/backend.png" alt="Certificado de Backend" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
+                    <img src="./images/reactDiploma.png" alt="Certificado de React.js" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
+                </div>
+            </div>
 
             <!-- CONTACT VIEW (filled in Task 8) -->
             <div class="view-content relative z-10 flex-1" id="view-contact"></div>

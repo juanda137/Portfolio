@@ -383,4 +383,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ===== contact form =====
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            // The mailto action opens the user's mail client; log a confirmation too.
+            addSystemLog(translations[currentLang].form_sent, 'ok');
+        });
+    }
 });

@@ -365,8 +365,33 @@
                 </div>
             </div>
 
-            <!-- CONTACT VIEW (filled in Task 8) -->
-            <div class="view-content relative z-10 flex-1" id="view-contact"></div>
+            <!-- CONTACT VIEW -->
+            <div class="view-content relative z-10 flex-1" id="view-contact">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="contact_links_title"></h2>
+                        <div class="space-y-3 font-code-snippet text-sm">
+                            <a class="flex items-center gap-3 p-3 border border-outline-variant hover:border-primary-fixed-dim hover:text-primary-fixed-dim bg-[#0a0a0a] transition-colors clip-corner text-on-surface-variant" href="https://github.com/juanda137" target="_blank" rel="noopener noreferrer">
+                                <span class="material-symbols-outlined">code</span><span data-key="contact_github"></span>
+                            </a>
+                            <a class="flex items-center gap-3 p-3 border border-outline-variant hover:border-secondary-fixed-dim hover:text-secondary-fixed-dim bg-[#0a0a0a] transition-colors clip-corner text-on-surface-variant" href="https://www.linkedin.com/in/juan-david-benavides" target="_blank" rel="noopener noreferrer">
+                                <span class="material-symbols-outlined">work</span><span data-key="contact_linkedin"></span>
+                            </a>
+                            <a class="flex items-center gap-3 p-3 border border-outline-variant hover:border-tertiary-fixed-dim hover:text-tertiary-fixed-dim bg-[#0a0a0a] transition-colors clip-corner text-on-surface-variant" href="mailto:juanda.benavidesf@gmail.com">
+                                <span class="material-symbols-outlined">mail</span><span data-key="contact_email"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="contact_form_title"></h2>
+                        <form class="space-y-4" id="contact-form" action="mailto:juanda.benavidesf@gmail.com" method="post" enctype="text/plain">
+                            <input class="w-full bg-[#0a0a0a] border border-outline-variant focus:border-primary-fixed-dim text-inverse-surface font-code-snippet text-xs p-3 outline-none focus:ring-0 clip-corner" data-key-placeholder="form_name_placeholder" name="sender" type="text" required />
+                            <textarea class="w-full bg-[#0a0a0a] border border-outline-variant focus:border-primary-fixed-dim text-inverse-surface font-code-snippet text-xs p-3 outline-none focus:ring-0 clip-corner resize-none" data-key-placeholder="form_msg_placeholder" name="payload" rows="4" required></textarea>
+                            <button class="w-full bg-primary-container/10 border border-primary-fixed-dim text-primary-fixed-dim font-label-sm py-3 uppercase tracking-widest clip-corner hover:bg-primary-fixed-dim hover:text-black transition-colors" type="submit" data-key="form_submit"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- RIGHT INSPECTOR -->

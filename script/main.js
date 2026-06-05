@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         await sleep(300);
         bootScreen.classList.add('boot-done');
-        await sleep(550);
+        await sleep(750);
         bootScreen.style.display = 'none';
     }
 
@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         const skip = () => {
             bootScreen.classList.add('boot-done');
-            setTimeout(() => { bootScreen.style.display = 'none'; }, 400);
+            setTimeout(() => { bootScreen.style.display = 'none'; }, 750);
             runRevealAnimations();
             window.removeEventListener('keydown', skip);
             bootScreen.removeEventListener('click', skip);

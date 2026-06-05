@@ -175,3 +175,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
     #boot-screen { display: none !important; }
 }
+
+/* === MOBILE BOTTOM NAV === */
+#mobile-nav a {
+    min-width: 0;
+    gap: 4px;
+    padding: 8px 4px;
+}
+#mobile-nav .material-symbols-outlined {
+    font-size: 28px;
+}

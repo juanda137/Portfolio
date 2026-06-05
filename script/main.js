@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_logs: "Project_Logs",
             nav_academy: "Academy_Data",
             nav_contact: "Contact",
+            nav_logs_short: "Projects",
+            nav_academy_short: "Education",
             vitals_title: "System_Vitals",
             vital_backend: "BACKEND (Go/Node/Py)",
             vital_frontend: "FRONTEND (React/JS)",
@@ -101,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_logs: "Registro_Proyectos",
             nav_academy: "Datos_Academia",
             nav_contact: "Contacto",
+            nav_logs_short: "Proyectos",
+            nav_academy_short: "Estudios",
             vitals_title: "Constantes_Sistema",
             vital_backend: "BACKEND (Go/Node/Py)",
             vital_frontend: "FRONTEND (React/JS)",
@@ -575,6 +579,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (e.key === 'Escape' && isFsOpen()) closeTerminal();
     });
+
+    // ===== mobile swipe navigation (swipe left/right to change view) =====
+    const swipeViews = ['view-overview', 'view-experience', 'view-education', 'view-contact'];
+    const swipeSurface = document.getElementById('main-content');
+    let touchX = 0, touchY = 0, touchT = 0;
+    if (swipeSurface) {
+        swipeSurface.addEventListener('touchstart', (e) => {
+            const t = e.changedTouches[0];
+            touchX = t.clientX; touchY = t.clientY; touchT = Date.now();
+        }, { passive: true });
+        swipeSurface.addEventListener('touchend', (e) => {
+            if (colorMenuActive || isFsOpen()) return;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - touchX;
+            const dy = t.clientY - touchY;
+            if (Date.now() - touchT > 700) return;         // too slow to be a swipe
+            if (Math.abs(dx) < 60) return;                 // too short
+            if (Math.abs(dx) < Math.abs(dy) * 1.4) return; // mostly vertical -> let it scroll
+            let i = swipeViews.indexOf(getActiveViewId());
+            if (i < 0) i = 0;
+            if (dx < 0 && i < swipeViews.length - 1) switchView(swipeViews[i + 1]);
+            else if (dx > 0 && i > 0) switchView(swipeViews[i - 1]);
+        }, { passive: true });
+    }
 
     // ===== contact form =====
     const contactForm = document.getElementById('contact-form');

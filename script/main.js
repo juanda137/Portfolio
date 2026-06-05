@@ -190,6 +190,104 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Expose for the logic added in Tasks 4–5.
-    window.__JDBOS__ = { translations };
+    // ===== i18n =====
+    const langToggle = document.getElementById('lang-toggle');
+    const langToggleMobile = document.getElementById('lang-toggle-mobile');
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    const setLanguage = (lang) => {
+        const dict = translations[lang];
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const text = dict[el.getAttribute('data-key')];
+            if (text !== undefined) el.innerHTML = text;
+        });
+        document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+            const text = dict[el.getAttribute('data-key-placeholder')];
+            if (text !== undefined) el.setAttribute('placeholder', text);
+        });
+        document.documentElement.lang = lang;
+        const label = lang === 'en' ? 'LANG: EN » ES' : 'IDIOMA: ES » EN';
+        if (langToggle) langToggle.textContent = label;
+        if (langToggleMobile) langToggleMobile.textContent = lang.toUpperCase();
+        localStorage.setItem('lang', lang);
+        currentLang = lang;
+        // Refresh the active view's typewriter title/subtitle in the new language.
+        refreshViewHeader(getActiveViewId());
+    };
+
+    const toggleLang = () => setLanguage(currentLang === 'en' ? 'es' : 'en');
+    if (langToggle) langToggle.addEventListener('click', toggleLang);
+    if (langToggleMobile) langToggleMobile.addEventListener('click', toggleLang);
+
+    // ===== SPA view switching =====
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const views = document.querySelectorAll('.view-content');
+    const viewTitle = document.getElementById('view-title');
+    const viewSubtitle = document.getElementById('view-subtitle');
+
+    const titleKey = (viewId) => 'title_' + viewId.replace('view-', '');
+    const subtitleKey = (viewId) => 'subtitle_' + viewId.replace('view-', '');
+
+    const getActiveViewId = () => {
+        const active = document.querySelector('.view-content.active');
+        return active ? active.id : 'view-overview';
+    };
+
+    const refreshViewHeader = (viewId) => {
+        const dict = translations[currentLang];
+        viewTitle.textContent = dict[titleKey(viewId)] || '> JDB-OS';
+        viewTitle.classList.remove('typewriter');
+        void viewTitle.offsetWidth; // reflow to restart the animation
+        viewTitle.classList.add('typewriter');
+        viewSubtitle.textContent = dict[subtitleKey(viewId)] || '';
+    };
+
+    const activeNavClasses = "nav-btn flex items-center gap-3 font-label-sm text-label-sm uppercase text-on-primary-container bg-primary-container border-l-4 border-primary-fixed-dim p-2 w-full clip-corner crt-flicker cursor-pointer";
+    const idleNavClasses = "nav-btn flex items-center gap-3 font-label-sm text-label-sm uppercase text-on-surface-variant p-2 w-full hover:bg-surface-variant hover:text-primary-fixed-dim transition-all duration-75 clip-corner border-l-4 border-transparent hover:border-outline-variant cursor-pointer";
+
+    const switchView = (viewId, updateHash = true) => {
+        if (!document.getElementById(viewId)) viewId = 'view-overview';
+
+        views.forEach(v => v.classList.toggle('active', v.id === viewId));
+
+        // Desktop sidebar nav styling (the mobile nav keeps its grid classes).
+        document.querySelectorAll('#nav-menu .nav-btn').forEach(btn => {
+            const isActive = btn.dataset.target === viewId;
+            btn.className = isActive ? activeNavClasses : idleNavClasses;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = isActive ? "'FILL' 1" : "'FILL' 0";
+        });
+
+        // Mobile nav active state.
+        document.querySelectorAll('#mobile-nav .nav-btn').forEach(btn => {
+            const isActive = btn.dataset.target === viewId;
+            btn.classList.toggle('bg-primary-container', isActive);
+            btn.classList.toggle('text-on-primary-fixed', isActive);
+            btn.classList.toggle('border-primary-fixed-dim', isActive);
+            btn.classList.toggle('text-primary-fixed-dim', !isActive);
+            btn.classList.toggle('opacity-70', !isActive);
+            btn.classList.toggle('border-transparent', !isActive);
+        });
+
+        refreshViewHeader(viewId);
+        document.getElementById('main-content').scrollTop = 0;
+        if (updateHash) history.replaceState(null, '', '#' + viewId.replace('view-', ''));
+        if (window.addSystemLog) window.addSystemLog('Switched view to ' + viewId.replace('view-', '').toUpperCase());
+    };
+    window.switchView = switchView;
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchView(btn.dataset.target);
+        });
+    });
+
+    // ===== boot =====
+    setLanguage(currentLang);
+    const initialView = location.hash ? 'view-' + location.hash.slice(1) : 'view-overview';
+    switchView(document.getElementById(initialView) ? initialView : 'view-overview', false);
+    window.addEventListener('hashchange', () => {
+        switchView('view-' + location.hash.slice(1), false);
+    });
 });

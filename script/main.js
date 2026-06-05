@@ -201,8 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (text !== undefined) el.setAttribute('placeholder', text);
         });
         document.documentElement.lang = lang;
-        const label = lang === 'en' ? 'LANG: EN » ES' : 'IDIOMA: ES » EN';
-        if (langToggle) langToggle.textContent = label;
+        const label = lang === 'en' ? 'EN » ES' : 'ES » EN';
+        const langLabelEl = document.getElementById('lang-toggle-label');
+        if (langLabelEl) langLabelEl.textContent = label;
+        else if (langToggle) langToggle.textContent = label;
         if (langToggleMobile) langToggleMobile.textContent = lang.toUpperCase();
         localStorage.setItem('lang', lang);
         currentLang = lang;

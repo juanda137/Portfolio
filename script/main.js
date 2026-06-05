@@ -583,9 +583,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== mobile swipe navigation (swipe left/right to change view) =====
     const swipeViews = ['view-overview', 'view-experience', 'view-education', 'view-contact'];
     const swipeSurface = document.getElementById('main-content');
+    const swipeHint = document.getElementById('swipe-hint');
     let touchX = 0, touchY = 0, touchT = 0;
+
+    function maybeShowSwipeHint() {
+        if (!swipeHint || localStorage.getItem('swipeHintSeen')) return;
+        if (!window.matchMedia('(max-width: 767px)').matches) return;
+        swipeHint.classList.add('show');
+        localStorage.setItem('swipeHintSeen', '1');
+        setTimeout(() => swipeHint.classList.remove('show'), 3700);
+    }
+    function dismissSwipeHint() {
+        if (swipeHint) swipeHint.classList.remove('show');
+        localStorage.setItem('swipeHintSeen', '1');
+    }
+
     if (swipeSurface) {
         swipeSurface.addEventListener('touchstart', (e) => {
+            dismissSwipeHint();
             const t = e.changedTouches[0];
             touchX = t.clientX; touchY = t.clientY; touchT = Date.now();
         }, { passive: true });
@@ -631,6 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         if (!prefersReduced) triggerGlitch();
+        setTimeout(maybeShowSwipeHint, 900);
     }
 
     async function runBootScreen() {

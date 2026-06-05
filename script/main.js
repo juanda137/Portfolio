@@ -288,19 +288,24 @@ document.addEventListener('DOMContentLoaded', () => {
         switchView('view-' + location.hash.slice(1), false);
     });
 
-    // ===== realtime logs =====
+    // ===== realtime logs (mirrored to the side panel and the full-screen terminal) =====
     const logsContainer = document.getElementById('realtime-logs');
     function addSystemLog(message, type = 'info') {
-        if (!logsContainer) return;
+        const targets = [logsContainer, document.getElementById('fs-logs')].filter(Boolean);
+        if (!targets.length) return;
         const time = new Date().toLocaleTimeString('en-US', { hour12: false });
-        const p = document.createElement('p');
-        let prefix = '[INFO]';
-        if (type === 'error') { prefix = '[ERR ]'; p.className = 'text-error'; }
-        else if (type === 'ok') { prefix = '[ OK ]'; p.className = 'text-primary-fixed-dim'; }
-        else if (message.startsWith('>')) { prefix = '[USER]'; p.className = 'text-secondary-fixed-dim'; }
-        p.textContent = `${prefix} ${time} - ${message}`;
-        logsContainer.appendChild(p);
-        logsContainer.scrollTop = logsContainer.scrollHeight;
+        let prefix = '[INFO]', cls = '';
+        if (type === 'error') { prefix = '[ERR ]'; cls = 'text-error'; }
+        else if (type === 'ok') { prefix = '[ OK ]'; cls = 'text-primary-fixed-dim'; }
+        else if (message.startsWith('>')) { prefix = '[USER]'; cls = 'text-secondary-fixed-dim'; }
+        const text = `${prefix} ${time} - ${message}`;
+        targets.forEach((c) => {
+            const p = document.createElement('p');
+            p.className = cls;
+            p.textContent = text;
+            c.appendChild(p);
+            c.scrollTop = c.scrollHeight;
+        });
     }
     window.addSystemLog = addSystemLog;
 
@@ -339,39 +344,140 @@ document.addEventListener('DOMContentLoaded', () => {
     // runRevealAnimations() once the full-screen boot intro finishes.
 
     // ===== terminal command line =====
-    const cmdInput = document.getElementById('cmd-input');
     const commandMap = {
         home: 'view-overview', overview: 'view-overview',
         experience: 'view-experience', logs: 'view-experience', projects: 'view-experience',
         education: 'view-education', academy: 'view-education',
         contact: 'view-contact'
     };
-    if (cmdInput) {
-        cmdInput.addEventListener('keypress', function (e) {
-            if (e.key !== 'Enter') return;
-            const cmd = this.value.trim().toLowerCase();
-            this.value = '';
-            if (cmd === '') return;
-            addSystemLog('> ' + cmd);
-            if (cmd === 'help') {
-                addSystemLog("COMMANDS: overview, experience, education, contact, lang, clear, github, linkedin, help");
-            } else if (cmd === 'clear') {
-                logsContainer.innerHTML = '';
+
+    // Full-screen terminal
+    const fsTerminal = document.getElementById('terminal-fullscreen');
+    const fsLogs = document.getElementById('fs-logs');
+    const fsInput = document.getElementById('fs-input');
+    const isFsOpen = () => fsTerminal && fsTerminal.style.display === 'flex';
+
+    function openTerminal() {
+        if (!fsTerminal) return;
+        if (fsLogs && logsContainer) fsLogs.innerHTML = logsContainer.innerHTML; // carry the backlog over
+        fsTerminal.style.display = 'flex';
+        if (fsLogs) fsLogs.scrollTop = fsLogs.scrollHeight;
+        if (fsInput) fsInput.focus();
+        addSystemLog('Terminal maximized. Type "help" for the command list.', 'ok');
+    }
+    function closeTerminal() {
+        if (fsTerminal) fsTerminal.style.display = 'none';
+    }
+    function goView(viewId) {
+        switchView(viewId);
+        if (isFsOpen()) closeTerminal();
+    }
+    function triggerGlitch() {
+        const mc = document.getElementById('main-content');
+        if (!mc) return;
+        mc.classList.remove('page-glitch-in');
+        void mc.offsetWidth;
+        mc.classList.add('page-glitch-in');
+        setTimeout(() => mc.classList.remove('page-glitch-in'), 600);
+    }
+
+    function runCommand(rawValue) {
+        const value = rawValue.trim();
+        const cmd = value.toLowerCase();
+        if (cmd === '') return;
+        addSystemLog('> ' + value);
+
+        if (cmd.startsWith('echo ')) { addSystemLog(value.slice(5)); return; }
+        if (cmd.startsWith('sudo')) { addSystemLog('[sudo] password for guest: ********  ->  permission denied. Nice try. 😏', 'error'); return; }
+        if (cmd.startsWith('rm -rf')) { addSystemLog('Formatting /dev/portfolio... PSYCH. 😅 This site is bulletproof.', 'error'); return; }
+
+        switch (cmd) {
+            case 'help':
+                addSystemLog('COMMANDS: overview, experience, education, contact, lang, clear, github, linkedin, whoami, ls, date, hireme, coffee, glitch, matrix, exit, help');
+                addSystemLog('psst... a few hidden ones are out there too. 🤫', 'ok');
+                break;
+            case 'clear':
+                [logsContainer, fsLogs].forEach((c) => { if (c) c.innerHTML = ''; });
                 addSystemLog('Console cleared.', 'ok');
-            } else if (cmd === 'lang') {
+                break;
+            case 'lang':
                 toggleLang();
                 addSystemLog('Language switched.', 'ok');
-            } else if (cmd === 'github') {
+                break;
+            case 'github':
+                addSystemLog('Opening GitHub...', 'ok');
                 window.open('https://github.com/juanda137', '_blank');
-            } else if (cmd === 'linkedin') {
+                break;
+            case 'linkedin':
+                addSystemLog('Opening LinkedIn...', 'ok');
                 window.open('https://www.linkedin.com/in/juan-david-benavides', '_blank');
-            } else if (commandMap[cmd]) {
-                switchView(commandMap[cmd]);
-            } else {
-                addSystemLog(`Command not found: ${cmd}. Type 'help'.`, 'error');
-            }
+                break;
+            case 'whoami':
+                addSystemLog('guest@JDB-OS — operated by Juan David Benavides · Full Stack Developer & AI Data Engineer.', 'ok');
+                break;
+            case 'ls':
+                addSystemLog('drwxr-xr-x  overview/  experience/  education/  contact/  secrets/');
+                break;
+            case 'secrets':
+            case 'cd secrets':
+                addSystemLog('Access denied. ...ok fine: I ship with AI-first workflows and way too much coffee. 🤖☕', 'ok');
+                break;
+            case 'date':
+                addSystemLog(new Date().toString());
+                break;
+            case 'coffee':
+                addSystemLog("☕ Brewing... ERROR 418: I'm a teapot.", 'error');
+                break;
+            case 'hire':
+            case 'hireme':
+            case 'hire me':
+                addSystemLog('Excellent decision. Routing you to the contact protocol...', 'ok');
+                goView('view-contact');
+                break;
+            case 'cv':
+            case 'resume':
+                addSystemLog("CV uplink pending — ping me via 'contact' for now.", 'ok');
+                goView('view-contact');
+                break;
+            case 'glitch':
+                if (isFsOpen()) closeTerminal();
+                triggerGlitch();
+                addSystemLog('Reality distortion engaged.', 'ok');
+                break;
+            case 'matrix':
+                ['Wake up, Neo...', 'The Matrix has you...', 'Follow the white rabbit. 🐇'].forEach((m, i) => setTimeout(() => addSystemLog(m, 'ok'), 450 * (i + 1)));
+                break;
+            case 'exit':
+            case 'quit':
+                if (isFsOpen()) closeTerminal();
+                else addSystemLog('There is no escape from JDB-OS. Use the menu. 😈', 'error');
+                break;
+            default:
+                if (commandMap[cmd]) goView(commandMap[cmd]);
+                else addSystemLog(`Command not found: ${cmd}. Type 'help'.`, 'error');
+        }
+    }
+
+    function attachTerminalInput(input) {
+        if (!input) return;
+        input.addEventListener('keypress', function (e) {
+            if (e.key !== 'Enter') return;
+            runCommand(this.value);
+            this.value = '';
         });
     }
+    attachTerminalInput(document.getElementById('cmd-input'));
+    attachTerminalInput(fsInput);
+
+    const expandBtn = document.getElementById('terminal-expand');
+    const expandBtnMobile = document.getElementById('terminal-expand-mobile');
+    const closeBtn = document.getElementById('terminal-close');
+    if (expandBtn) expandBtn.addEventListener('click', openTerminal);
+    if (expandBtnMobile) expandBtnMobile.addEventListener('click', openTerminal);
+    if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isFsOpen()) closeTerminal();
+    });
 
     // ===== contact form =====
     const contactForm = document.getElementById('contact-form');

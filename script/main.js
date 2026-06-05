@@ -1,36 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
+            // --- UI chrome ---
+            ui_status_line: "STATUS: ONLINE · OPEN TO WORK",
+            nav_overview: "Overview",
+            nav_logs: "Project_Logs",
+            nav_academy: "Academy_Data",
+            nav_contact: "Contact",
+            vitals_title: "System_Vitals",
+            vital_backend: "BACKEND (Go/Node/Py)",
+            vital_frontend: "FRONTEND (React/JS)",
+            vital_ai: "AI & AUTOMATION",
+            vital_data: "DATA (SQL/Mongo)",
+            lang_toggle: "LANG: EN",
+            inspector_title: "Sys_Inspector",
+            stat_projects: "Projects_Logged",
+            stat_certs: "Certs_Unlocked",
+            stat_languages: "Languages",
+            logs_title: "Realtime_Logs",
+            cmd_placeholder: "Type 'help' or use the menu...",
+            // --- View titles / subtitles ---
+            title_overview: "> INIT_SEQUENCE_COMPLETE",
+            subtitle_overview: "Welcome to JDB-OS Core. Profile loaded.",
+            title_experience: "> PROJECT_LOGS.EXE",
+            subtitle_experience: "Executing timeline data retrieval...",
+            title_education: "> ACADEMY_DATA.BIN",
+            subtitle_education: "Decrypting academic records...",
+            title_contact: "> COMM_LINK.SH",
+            subtitle_contact: "Establishing secure communication protocols...",
+            // --- Profile / hero ---
             name: "Juan David Benavides",
-            nav_home: "Home",
-            nav_education: "Education",
-            nav_experience: "Experience",
             hero_title: "Full Stack Developer & AI Data Engineer",
             hero_subtitle: "Software Developer and AI Data Analyst specializing in AI-First solutions. I design and deploy AI agents, build high-scale architectures with Go (Golang), and develop full-stack applications with the MERN stack — delivering scalable, data-driven products in Agile environments.",
             hero_location: "Bogotá, Colombia",
+            // --- Skills ---
             skills_title: "Skills & Technologies",
             ai_skills_title: "AI & Automation",
             frontend_skills_title: "Frontend",
             backend_skills_title: "Backend",
             db_skills_title: "Databases & Tools",
-            soft_skills_title: "Professional Strengths",
-            soft_skill_1: "AI-Powered Problem Solving",
-            soft_skill_2: "Adaptability & Technological Evolution",
-            soft_skill_3: "Innovation in Automation",
-            soft_skill_4: "Data Communication & Insights",
-            soft_skill_5: "Results-Oriented & Efficiency",
-            soft_skill_6: "Hybrid Environment Collaboration",
-            languages_title: "Languages",
-            education_title: "Education & Training",
-            degree_1: "Technical Degree in Software Programming",
-            degree_2: "Web and Backend Development",
-            diplomas_title: "Certificates",
-            diplomas_text: "Certified across the full web development stack — from frontend to backend.",
+            // --- Experience (Project_Logs) ---
             experience_title: "Professional Experience",
             responsibilities_title: "Responsibilities",
             achievements_title: "Key Achievements",
             tech_title: "Technologies",
             current_badge: "Current",
+            view_github: "View on GitHub",
             job_1_title: "Growth, Automation & Data Architecture Platform",
             job_1_company: "Bia",
             job_1_period: "Nov 2025 – Present · Hybrid",
@@ -60,14 +75,56 @@ document.addEventListener('DOMContentLoaded', () => {
             job_3_resp_3: "Built global cart state management (add, remove, summarize) using the React Context API.",
             job_3_ach_1: "Developed a complete and functional shopping cart, improving the purchasing experience.",
             job_3_ach_2: "Created a modular and maintainable codebase using React's component-based architecture.",
-            footer_contact: "Get in touch:",
-            footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. All Rights Reserved.`
+            // --- Education (Academy_Data) ---
+            education_title: "Education & Training",
+            degree_1: "Technical Degree in Software Programming",
+            degree_1_place: "Campuslands · Bogotá, Colombia",
+            degree_1_period: "Nov 2024 – Aug 2025",
+            degree_2: "Web and Backend Development",
+            degree_2_place: "Coderhouse · Virtual",
+            degree_2_period: "Jan 2024 – Jan 2025",
+            diplomas_title: "Certificates",
+            diplomas_text: "Certified across the full web development stack — from frontend to backend.",
+            // --- Contact (Comm_Link) ---
+            contact_links_title: "Network Link Terminal",
+            contact_form_title: "Transmission Port",
+            contact_github: "GITHUB_REPO",
+            contact_linkedin: "LINKEDIN_PROFILE",
+            contact_email: "SECURE_EMAIL",
+            form_name_placeholder: "SENDER_ID",
+            form_msg_placeholder: "PAYLOAD_DATA...",
+            form_submit: "Send Transmission",
+            form_sent: "TRANSMISSION SENT — I'll reply soon.",
+            // --- Footer copy (kept for parity) ---
+            footer_copy: `© ${new Date().getFullYear()} Juan David Benavides. All Rights Reserved.`
         },
         es: {
+            ui_status_line: "ESTADO: EN LÍNEA · DISPONIBLE",
+            nav_overview: "General",
+            nav_logs: "Registro_Proyectos",
+            nav_academy: "Datos_Academia",
+            nav_contact: "Contacto",
+            vitals_title: "Constantes_Sistema",
+            vital_backend: "BACKEND (Go/Node/Py)",
+            vital_frontend: "FRONTEND (React/JS)",
+            vital_ai: "IA & AUTOMATIZACIÓN",
+            vital_data: "DATOS (SQL/Mongo)",
+            lang_toggle: "IDIOMA: ES",
+            inspector_title: "Inspector_Sis",
+            stat_projects: "Proyectos",
+            stat_certs: "Certificados",
+            stat_languages: "Idiomas",
+            logs_title: "Logs_En_Vivo",
+            cmd_placeholder: "Escribe 'help' o usa el menú...",
+            title_overview: "> SECUENCIA_INICIO_COMPLETA",
+            subtitle_overview: "Bienvenido al núcleo JDB-OS. Perfil cargado.",
+            title_experience: "> REGISTRO_PROYECTOS.EXE",
+            subtitle_experience: "Recuperando datos de la línea de tiempo...",
+            title_education: "> DATOS_ACADEMIA.BIN",
+            subtitle_education: "Descifrando registros académicos...",
+            title_contact: "> ENLACE_COM.SH",
+            subtitle_contact: "Estableciendo protocolos de comunicación segura...",
             name: "Juan David Benavides",
-            nav_home: "Inicio",
-            nav_education: "Educación",
-            nav_experience: "Experiencia",
             hero_title: "Desarrollador Full Stack & AI Data Engineer",
             hero_subtitle: "Desarrollador de Software y AI Data Analyst especializado en soluciones IA-First. Diseño y despliego agentes de IA, construyo arquitecturas de alta escala con Go (Golang), y desarrollo aplicaciones full-stack con el stack MERN — entregando productos escalables y basados en datos en entornos ágiles.",
             hero_location: "Bogotá, Colombia",
@@ -76,24 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
             frontend_skills_title: "Frontend",
             backend_skills_title: "Backend",
             db_skills_title: "Bases de Datos & Herramientas",
-            soft_skills_title: "Fortalezas Profesionales",
-            soft_skill_1: "Resolución de Problemas con IA",
-            soft_skill_2: "Adaptabilidad y Evolución Tecnológica",
-            soft_skill_3: "Innovación en Automatización",
-            soft_skill_4: "Comunicación de Datos e Insights",
-            soft_skill_5: "Orientación a Resultados y Eficiencia",
-            soft_skill_6: "Colaboración en Entornos Híbridos",
-            languages_title: "Idiomas",
-            education_title: "Formación Académica",
-            degree_1: "Técnico en Programación de Software",
-            degree_2: "Desarrollo Web y Backend",
-            diplomas_title: "Certificados",
-            diplomas_text: "Certificado en el stack completo de desarrollo web — frontend y backend.",
             experience_title: "Experiencia Profesional",
             responsibilities_title: "Roles y Responsabilidades",
             achievements_title: "Logros Clave",
             tech_title: "Tecnologías",
             current_badge: "Actual",
+            view_github: "Ver en GitHub",
             job_1_title: "Plataforma de Growth, Automatización y Arquitectura de Datos",
             job_1_company: "Bia",
             job_1_period: "Nov 2025 – Presente · Híbrido",
@@ -123,70 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
             job_3_resp_3: "Construí la gestión de estado global del carrito (añadir, eliminar, resumir) usando la Context API de React.",
             job_3_ach_1: "Desarrollé un sistema de carrito de compras completo y funcional, mejorando la experiencia de compra.",
             job_3_ach_2: "Creé una base de código modular y mantenible aprovechando la arquitectura de componentes de React.",
-            footer_contact: "Ponte en contacto:",
-            footer_copy: `&copy; ${new Date().getFullYear()} Juan David Benavides. Todos los derechos reservados.`
+            education_title: "Formación Académica",
+            degree_1: "Técnico en Programación de Software",
+            degree_1_place: "Campuslands · Bogotá, Colombia",
+            degree_1_period: "Nov 2024 – Ago 2025",
+            degree_2: "Desarrollo Web y Backend",
+            degree_2_place: "Coderhouse · Virtual",
+            degree_2_period: "Ene 2024 – Ene 2025",
+            diplomas_title: "Certificados",
+            diplomas_text: "Certificado en el stack completo de desarrollo web — frontend y backend.",
+            contact_links_title: "Terminal de Enlace de Red",
+            contact_form_title: "Puerto de Transmisión",
+            contact_github: "REPO_GITHUB",
+            contact_linkedin: "PERFIL_LINKEDIN",
+            contact_email: "EMAIL_SEGURO",
+            form_name_placeholder: "ID_REMITENTE",
+            form_msg_placeholder: "DATOS_MENSAJE...",
+            form_submit: "Enviar Transmisión",
+            form_sent: "TRANSMISIÓN ENVIADA — responderé pronto.",
+            footer_copy: `© ${new Date().getFullYear()} Juan David Benavides. Todos los derechos reservados.`
         }
     };
 
-    const langToggleButton = document.getElementById('lang-toggle');
-    let currentLang = localStorage.getItem('lang') || 'en';
-
-    const setLanguage = (lang) => {
-        document.querySelectorAll('[data-key]').forEach(element => {
-            const key = element.getAttribute('data-key');
-            const text = translations[lang][key];
-            if (text !== undefined) {
-                element.innerHTML = text;
-            }
-        });
-        document.documentElement.lang = lang;
-        if (langToggleButton) {
-            langToggleButton.textContent = lang === 'en' ? 'English' : 'Español';
-        }
-        localStorage.setItem('lang', lang);
-    };
-
-    if (langToggleButton) {
-        langToggleButton.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            setLanguage(currentLang);
-        });
-    }
-    setLanguage(currentLang);
-
-    // --- ANIMACIONES AL HACER SCROLL ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-    // --- MENÚ MÓVIL ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const navMenu = document.getElementById('nav-menu');
-    const menuOverlay = document.getElementById('menu-overlay');
-    const body = document.body;
-
-    const openMenu = () => {
-        navMenu.classList.add('is-open');
-        menuOverlay.classList.add('is-visible');
-        body.classList.add('overflow-hidden');
-    };
-
-    const closeMenu = () => {
-        navMenu.classList.remove('is-open');
-        menuOverlay.classList.remove('is-visible');
-        body.classList.remove('overflow-hidden');
-    };
-
-    if (mobileMenuButton && navMenu && closeMenuButton && menuOverlay) {
-        mobileMenuButton.addEventListener('click', openMenu);
-        closeMenuButton.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-    }
+    // Expose for the logic added in Tasks 4–5.
+    window.__JDBOS__ = { translations };
 });

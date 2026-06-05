@@ -58,20 +58,32 @@
     </script>
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
-<body class="text-on-background bg-background h-screen w-screen overflow-hidden font-body-base antialiased relative">
+<body class="text-on-background bg-background h-screen w-screen overflow-hidden font-body-base antialiased relative flex flex-col">
 
     <!-- Base layer grid + scanlines -->
     <div class="fixed inset-0 bg-grid-pattern bg-[length:32px_32px] pointer-events-none z-0"></div>
     <div class="scanline-overlay"></div>
 
+    <!-- Boot / intro screen -->
+    <div id="boot-screen" aria-hidden="true">
+        <div class="relative z-10 max-w-3xl w-full mx-auto text-xs sm:text-sm leading-relaxed">
+            <div class="font-headline-md text-headline-md text-primary-container mb-5 drop-shadow-[0_0_10px_rgba(0,255,102,0.6)]">JDB-OS v2.0</div>
+            <div class="mb-2 text-primary-fixed-dim">
+                <span class="text-secondary-fixed-dim">guest@JDB-OS:~$</span>
+                <span id="boot-cmd"></span><span id="boot-caret" class="boot-cursor"></span>
+            </div>
+            <div id="boot-output" class="space-y-0.5"></div>
+        </div>
+    </div>
+
     <!-- Mobile top bar -->
-    <header class="md:hidden flex justify-between items-center w-full px-terminal-padding border-b border-outline-variant bg-surface-container-lowest text-primary-fixed-dim font-code-snippet z-50 h-16 relative">
+    <header class="md:hidden flex justify-between items-center w-full px-terminal-padding border-b border-outline-variant bg-surface-container-lowest text-primary-fixed-dim font-code-snippet z-50 h-16 relative shrink-0">
         <div class="font-headline-md text-headline-md text-primary-container drop-shadow-[0_0_8px_rgba(0,255,102,0.6)]">JDB-OS</div>
         <button id="lang-toggle-mobile" class="border border-primary-fixed-dim text-primary-fixed-dim px-3 py-1 text-xs uppercase tracking-widest clip-corner"></button>
     </header>
 
     <!-- Main 3-panel layout -->
-    <main class="flex h-full md:h-screen w-full relative z-10 pt-16 md:pt-0 pb-16 md:pb-0">
+    <main class="flex flex-1 min-h-0 w-full relative z-10">
 
         <!-- LEFT PANEL -->
         <aside class="hidden md:flex flex-col h-full py-panel-margin bg-surface-container-low border-r border-outline-variant w-1/5 shrink-0 overflow-y-auto scroll-hidden relative">
@@ -421,7 +433,7 @@
     </main>
 
     <!-- BOTTOM TERMINAL / MOBILE NAV -->
-    <footer class="fixed bottom-0 left-0 w-full bg-surface-container-highest border-t border-primary-container/30 drop-shadow-[0_-4px_12px_rgba(0,229,91,0.2)] z-50">
+    <footer class="w-full shrink-0 relative bg-surface-container-highest border-t border-primary-container/30 drop-shadow-[0_-4px_12px_rgba(0,229,91,0.2)] z-50">
         <!-- Desktop terminal bar -->
         <div class="hidden md:flex h-12 w-full items-center px-4 bg-black border-t border-outline-variant font-code-snippet text-sm">
             <span class="text-primary-fixed-dim mr-2">guest@JDB-OS:~$</span>

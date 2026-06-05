@@ -3,9 +3,6 @@ body {
     font-family: 'JetBrains Mono', monospace;
     background-color: #000;
 }
-body.overflow-hidden {
-    overflow: hidden;
-}
 
 /* === SCANLINE / CRT OVERLAYS === */
 .scanline-overlay {
@@ -32,21 +29,6 @@ body.overflow-hidden {
 /* === ANGLED CORNER CLIP === */
 .clip-corner {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-}
-
-/* === GLITCH HOVER === */
-.glitch-hover:hover {
-    animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
-    background-color: #00ff66;
-    color: #000;
-}
-@keyframes glitch {
-    0%   { transform: translate(0); }
-    20%  { transform: translate(-2px, 1px); }
-    40%  { transform: translate(-1px, -1px); }
-    60%  { transform: translate(2px, 1px); }
-    80%  { transform: translate(1px, -1px); }
-    100% { transform: translate(0); }
 }
 
 /* === TYPEWRITER (view title) === */
@@ -88,4 +70,55 @@ body.overflow-hidden {
 .vital-bar {
     width: 0;
     transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === BOOT / INTRO SCREEN === */
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vw 6vw;
+    font-family: 'JetBrains Mono', monospace;
+    color: #00e55b;
+    overflow: hidden;
+}
+#boot-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+#boot-screen.boot-done {
+    animation: boot-glitch-out 0.55s steps(2, end) forwards;
+}
+@keyframes boot-glitch-out {
+    0%   { opacity: 1; transform: translate(0); clip-path: inset(0 0 0 0); }
+    20%  { transform: translate(-6px, 2px); clip-path: inset(8% 0 35% 0); }
+    40%  { transform: translate(6px, -2px); clip-path: inset(45% 0 12% 0); opacity: 0.9; }
+    60%  { transform: translate(-3px, 0); clip-path: inset(20% 0 50% 0); opacity: 0.7; }
+    80%  { transform: translate(3px, 1px); opacity: 0.35; }
+    100% { opacity: 0; transform: translate(0); visibility: hidden; }
+}
+.boot-cursor::after {
+    content: "\2587";
+    color: #00ff66;
+    animation: blink-caret 0.75s step-end infinite;
+}
+.page-glitch-in {
+    animation: page-glitch 0.45s steps(2, end) 1;
+}
+@keyframes page-glitch {
+    0%   { filter: hue-rotate(70deg) saturate(2.5); transform: translate(4px, 0); }
+    25%  { transform: translate(-4px, 0); }
+    50%  { filter: none; transform: translate(2px, 0); }
+    100% { filter: none; transform: translate(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #boot-screen { display: none !important; }
 }

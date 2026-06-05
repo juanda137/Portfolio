@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             vital_frontend: "FRONTEND (React/JS)",
             vital_ai: "AI & AUTOMATION",
             vital_data: "DATA (SQL/Mongo)",
-            lang_toggle: "LANG: EN",
             inspector_title: "Sys_Inspector",
             stat_projects: "Projects_Logged",
             stat_certs: "Certs_Unlocked",
@@ -94,9 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form_name_placeholder: "SENDER_ID",
             form_msg_placeholder: "PAYLOAD_DATA...",
             form_submit: "Send Transmission",
-            form_sent: "TRANSMISSION SENT — I'll reply soon.",
-            // --- Footer copy (kept for parity) ---
-            footer_copy: `© ${new Date().getFullYear()} Juan David Benavides. All Rights Reserved.`
+            form_sent: "TRANSMISSION SENT — I'll reply soon."
         },
         es: {
             ui_status_line: "ESTADO: EN LÍNEA · DISPONIBLE",
@@ -109,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             vital_frontend: "FRONTEND (React/JS)",
             vital_ai: "IA & AUTOMATIZACIÓN",
             vital_data: "DATOS (SQL/Mongo)",
-            lang_toggle: "IDIOMA: ES",
             inspector_title: "Inspector_Sis",
             stat_projects: "Proyectos",
             stat_certs: "Certificados",
@@ -185,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form_name_placeholder: "ID_REMITENTE",
             form_msg_placeholder: "DATOS_MENSAJE...",
             form_submit: "Enviar Transmisión",
-            form_sent: "TRANSMISIÓN ENVIADA — responderé pronto.",
-            footer_copy: `© ${new Date().getFullYear()} Juan David Benavides. Todos los derechos reservados.`
+            form_sent: "TRANSMISIÓN ENVIADA — responderé pronto."
         }
     };
 
@@ -315,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ['Stack: Go · React · Node · Python · MongoDB', 'info'],
         ['Status: Open to opportunities', 'ok']
     ];
-    bootLines.forEach((line, i) => setTimeout(() => addSystemLog(line[0], line[1]), 350 * (i + 1)));
 
     // Ambient terminal flavor.
     const ambientEvents = [
@@ -339,15 +333,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         requestAnimationFrame(step);
     }
-    document.querySelectorAll('.count-up').forEach(el => {
-        animateCount(el, parseInt(el.dataset.count, 10) || 0);
-    });
-    // Vital bars grow to their data-width after a tick so the transition runs.
-    requestAnimationFrame(() => {
-        document.querySelectorAll('.vital-bar').forEach(bar => {
-            bar.style.width = (bar.dataset.width || '0') + '%';
-        });
-    });
+    // Counters, vital bars and side-panel boot logs are triggered by
+    // runRevealAnimations() once the full-screen boot intro finishes.
 
     // ===== terminal command line =====
     const cmdInput = document.getElementById('cmd-input');
@@ -391,5 +378,81 @@ document.addEventListener('DOMContentLoaded', () => {
             // The mailto action opens the user's mail client; log a confirmation too.
             addSystemLog(translations[currentLang].form_sent, 'ok');
         });
+    }
+
+    // ===== boot / intro screen =====
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const bootScreen = document.getElementById('boot-screen');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Reveal the underlying UI: count-up stats, vital bars, side-panel logs, glitch-in.
+    let __revealed = false;
+    function runRevealAnimations() {
+        if (__revealed) return;
+        __revealed = true;
+        bootLines.forEach((line, i) => setTimeout(() => addSystemLog(line[0], line[1]), 220 * (i + 1)));
+        document.querySelectorAll('.count-up').forEach((el) => animateCount(el, parseInt(el.dataset.count, 10) || 0));
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.vital-bar').forEach((bar) => {
+                bar.style.width = (bar.dataset.width || '0') + '%';
+            });
+        });
+        const mc = document.getElementById('main-content');
+        if (mc) {
+            mc.classList.add('page-glitch-in');
+            setTimeout(() => mc.classList.remove('page-glitch-in'), 500);
+        }
+    }
+
+    async function runBootScreen() {
+        const bootCmd = document.getElementById('boot-cmd');
+        const bootCaret = document.getElementById('boot-caret');
+        const bootOutput = document.getElementById('boot-output');
+        const command = './init_portfolio.sh';
+        const lines = [
+            ['[ BOOT ] Initializing JDB-OS kernel...', 'dim'],
+            ['[  OK  ] Mounting /dev/portfolio', 'ok'],
+            ['[  OK  ] Loading profile: Juan David Benavides', 'ok'],
+            ['[  OK  ] Modules: i18n · terminal · analytics', 'ok'],
+            ['[  OK  ] Decrypting project logs...', 'ok'],
+            ['[  OK  ] Establishing secure uplink 192.168.1.1', 'ok'],
+            ['[  OK  ] Rendering interface', 'ok'],
+            ['[ DONE ] Welcome. Booting UI...', 'green']
+        ];
+        for (let i = 0; i < command.length; i++) {
+            bootCmd.textContent += command[i];
+            await sleep(45);
+        }
+        await sleep(350);
+        if (bootCaret) bootCaret.remove();
+        for (const [text, kind] of lines) {
+            const p = document.createElement('div');
+            p.className = 'boot-line ' + (kind === 'green'
+                ? 'text-primary-container'
+                : kind === 'ok' ? 'text-primary-fixed-dim' : 'text-on-surface-variant');
+            p.textContent = text;
+            bootOutput.appendChild(p);
+            await sleep(110);
+        }
+        await sleep(300);
+        bootScreen.classList.add('boot-done');
+        await sleep(550);
+        bootScreen.style.display = 'none';
+    }
+
+    if (!bootScreen || prefersReduced) {
+        if (bootScreen) bootScreen.style.display = 'none';
+        runRevealAnimations();
+    } else {
+        const skip = () => {
+            bootScreen.classList.add('boot-done');
+            setTimeout(() => { bootScreen.style.display = 'none'; }, 400);
+            runRevealAnimations();
+            window.removeEventListener('keydown', skip);
+            bootScreen.removeEventListener('click', skip);
+        };
+        window.addEventListener('keydown', skip);
+        bootScreen.addEventListener('click', skip);
+        runBootScreen().then(runRevealAnimations);
     }
 });

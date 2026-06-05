@@ -383,6 +383,88 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => shell.classList.remove('page-glitch-in'), 600);
     }
 
+    // ===== color theme + interactive menu =====
+    const colorThemes = [
+        { key: 'green', label: 'Green (default)', accent: '#00e55b', bright: '#00ff66', ink: '#00381a', rgb: '0, 255, 102' },
+        { key: 'red',   label: 'Red',             accent: '#ff4d4d', bright: '#ff1a1a', ink: '#3d0000', rgb: '255, 45, 45' },
+        { key: 'blue',  label: 'Blue',            accent: '#22a7ff', bright: '#0095ff', ink: '#00233d', rgb: '0, 149, 255' }
+    ];
+    function applyColorTheme(t) {
+        const s = document.documentElement.style;
+        s.setProperty('--accent', t.accent);
+        s.setProperty('--accent-bright', t.bright);
+        s.setProperty('--accent-ink', t.ink);
+        s.setProperty('--accent-rgb', t.rgb);
+        localStorage.setItem('accent', t.key);
+    }
+    (function loadSavedAccent() {
+        const saved = localStorage.getItem('accent');
+        const t = saved && colorThemes.find((x) => x.key === saved);
+        if (t) applyColorTheme(t);
+    })();
+
+    let colorMenuActive = false;
+    let colorMenuIndex = 0;
+    let colorMenuEl = null;
+    const accentIndex = () => {
+        const i = colorThemes.findIndex((t) => t.key === (localStorage.getItem('accent') || 'green'));
+        return i < 0 ? 0 : i;
+    };
+    function renderColorMenu() {
+        if (!colorMenuEl) return;
+        colorMenuEl.innerHTML = '';
+        const head = document.createElement('p');
+        head.className = 'text-secondary-fixed-dim';
+        head.textContent = 'Select primary color — ↑/↓ + Enter (or click · Esc cancels)';
+        colorMenuEl.appendChild(head);
+        colorThemes.forEach((t, i) => {
+            const row = document.createElement('p');
+            const sel = i === colorMenuIndex;
+            row.className = 'cursor-pointer ' + (sel ? 'text-inverse-surface' : 'text-on-surface-variant');
+            row.innerHTML = (sel ? '❯ ' : '&nbsp;&nbsp;') + '<span style="color:' + t.accent + '">●</span> ' + t.label;
+            row.addEventListener('click', () => { colorMenuIndex = i; commitColorMenu(); });
+            colorMenuEl.appendChild(row);
+        });
+        const c = colorMenuEl.parentElement;
+        if (c) c.scrollTop = c.scrollHeight;
+    }
+    function refocusTerminalInput() {
+        const inp = isFsOpen() ? fsInput : document.getElementById('cmd-input');
+        if (inp) inp.focus();
+    }
+    function openColorMenu() {
+        if (colorMenuActive) return;
+        // Ensure a visible log surface: if the side panel is hidden (md/lg widths)
+        // and the terminal isn't maximized, maximize it so the menu is visible.
+        if (!isFsOpen() && (!logsContainer || logsContainer.offsetParent === null)) openTerminal();
+        const container = isFsOpen() ? fsLogs : logsContainer;
+        if (!container) return;
+        colorMenuActive = true;
+        colorMenuIndex = accentIndex();
+        colorMenuEl = document.createElement('div');
+        colorMenuEl.className = 'color-menu border-l-2 border-primary-fixed-dim pl-2 my-1';
+        container.appendChild(colorMenuEl);
+        if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+        renderColorMenu();
+    }
+    function commitColorMenu() {
+        if (!colorMenuActive) return;
+        const t = colorThemes[colorMenuIndex];
+        applyColorTheme(t);
+        colorMenuActive = false;
+        colorMenuEl = null;
+        addSystemLog('Primary color set to ' + t.label.replace(' (default)', '') + '. ✦', 'ok');
+        refocusTerminalInput();
+    }
+    function cancelColorMenu() {
+        if (!colorMenuActive) return;
+        colorMenuActive = false;
+        if (colorMenuEl && colorMenuEl.parentElement) colorMenuEl.parentElement.removeChild(colorMenuEl);
+        colorMenuEl = null;
+        addSystemLog('Color selection cancelled.', 'error');
+        refocusTerminalInput();
+    }
+
     function runCommand(rawValue) {
         const value = rawValue.trim();
         const cmd = value.toLowerCase();
@@ -395,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch (cmd) {
             case 'help':
-                addSystemLog('COMMANDS: overview, experience, education, contact, lang, clear, github, linkedin, whoami, ls, date, hireme, coffee, glitch, matrix, exit, help');
+                addSystemLog('COMMANDS: overview, experience, education, contact, lang, color, clear, github, linkedin, whoami, ls, date, hireme, coffee, glitch, matrix, exit, help');
                 addSystemLog('psst... a few hidden ones are out there too. 🤫', 'ok');
                 break;
             case 'clear':
@@ -446,6 +528,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 triggerGlitch();
                 addSystemLog('Reality distortion engaged.', 'ok');
                 break;
+            case 'color':
+            case 'colour':
+            case 'theme':
+                openColorMenu();
+                break;
             case 'matrix':
                 ['Wake up, Neo...', 'The Matrix has you...', 'Follow the white rabbit. 🐇'].forEach((m, i) => setTimeout(() => addSystemLog(m, 'ok'), 450 * (i + 1)));
                 break;
@@ -464,6 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!input) return;
         input.addEventListener('keypress', function (e) {
             if (e.key !== 'Enter') return;
+            if (colorMenuActive) return; // the menu handles Enter
             runCommand(this.value);
             this.value = '';
         });
@@ -478,6 +566,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (expandBtnMobile) expandBtnMobile.addEventListener('click', openTerminal);
     if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
     document.addEventListener('keydown', (e) => {
+        if (colorMenuActive) {
+            if (e.key === 'ArrowUp') { e.preventDefault(); colorMenuIndex = (colorMenuIndex - 1 + colorThemes.length) % colorThemes.length; renderColorMenu(); }
+            else if (e.key === 'ArrowDown') { e.preventDefault(); colorMenuIndex = (colorMenuIndex + 1) % colorThemes.length; renderColorMenu(); }
+            else if (e.key === 'Enter') { e.preventDefault(); commitColorMenu(); }
+            else if (e.key === 'Escape') { e.preventDefault(); cancelColorMenu(); }
+            return;
+        }
         if (e.key === 'Escape' && isFsOpen()) closeTerminal();
     });
 

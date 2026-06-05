@@ -76,6 +76,9 @@
         </div>
     </div>
 
+    <!-- App shell: everything the glitch effect distorts -->
+    <div id="app-shell" class="flex flex-col flex-1 min-h-0 w-full relative z-10">
+
     <!-- Mobile top bar -->
     <header class="md:hidden flex justify-between items-center w-full px-terminal-padding border-b border-outline-variant bg-surface-container-lowest text-primary-fixed-dim font-code-snippet z-50 h-16 relative shrink-0">
         <div class="font-headline-md text-headline-md text-primary-container drop-shadow-[0_0_8px_rgba(0,255,102,0.6)]">JDB-OS</div>
@@ -471,6 +474,8 @@
             </a>
         </nav>
     </footer>
+    </div>
+    <!-- /app-shell -->
 
     <!-- Full-screen terminal -->
     <div id="terminal-fullscreen" style="display:none" class="fixed inset-0 z-[90] bg-black/95 flex-col font-code-snippet">

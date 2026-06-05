@@ -373,12 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isFsOpen()) closeTerminal();
     }
     function triggerGlitch() {
-        const mc = document.getElementById('main-content');
-        if (!mc) return;
-        mc.classList.remove('page-glitch-in');
-        void mc.offsetWidth;
-        mc.classList.add('page-glitch-in');
-        setTimeout(() => mc.classList.remove('page-glitch-in'), 600);
+        // Glitch the whole UI shell (both sidebars, center console, terminal bar),
+        // falling back to the center panel if the shell wrapper is absent.
+        const shell = document.getElementById('app-shell') || document.getElementById('main-content');
+        if (!shell) return;
+        shell.classList.remove('page-glitch-in');
+        void shell.offsetWidth;
+        shell.classList.add('page-glitch-in');
+        setTimeout(() => shell.classList.remove('page-glitch-in'), 600);
     }
 
     function runCommand(rawValue) {
@@ -505,11 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bar.style.width = (bar.dataset.width || '0') + '%';
             });
         });
-        const mc = document.getElementById('main-content');
-        if (mc) {
-            mc.classList.add('page-glitch-in');
-            setTimeout(() => mc.classList.remove('page-glitch-in'), 500);
-        }
+        if (!prefersReduced) triggerGlitch();
     }
 
     async function runBootScreen() {

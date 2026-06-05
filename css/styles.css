@@ -63,15 +63,19 @@ body {
     scrollbar-width: none;
 }
 
-/* === SPA VIEW VISIBILITY === */
+/* === SPA VIEW VISIBILITY (glitch-in on every view change) === */
 .view-content { display: none; }
 .view-content.active {
     display: block;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: view-glitch 0.4s steps(1, end);
 }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+@keyframes view-glitch {
+    0%   { opacity: 0.2; transform: translate(10px, 0); clip-path: inset(0 0 55% 0); filter: drop-shadow(4px 0 #ff003c) drop-shadow(-4px 0 #00fff9); }
+    18%  { opacity: 1;   transform: translate(-8px, 0); clip-path: inset(42% 0 0 0); }
+    36%  { transform: translate(6px, 0);  clip-path: inset(0 0 28% 0); filter: invert(1); }
+    54%  { transform: translate(-4px, 0); clip-path: inset(16% 0 16% 0); filter: drop-shadow(-3px 0 #ff003c) drop-shadow(3px 0 #00fff9); }
+    72%  { transform: translate(3px, 0);  clip-path: inset(0 0 8% 0); filter: none; }
+    100% { opacity: 1; transform: translate(0); clip-path: inset(0 0 0 0); filter: none; }
 }
 
 /* === ANIMATED VITAL BARS === */
@@ -174,4 +178,57 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
     #boot-screen { display: none !important; }
+    .view-content.active { animation: none; }
+    #swipe-hint.show { animation: none; }
+}
+
+/* === MOBILE BOTTOM NAV === */
+#mobile-nav a {
+    min-width: 0;
+    gap: 4px;
+    padding: 8px 4px;
+}
+#mobile-nav .material-symbols-outlined {
+    font-size: 28px;
+}
+
+/* === SWIPE HINT (first mobile visit) === */
+#swipe-hint {
+    position: fixed;
+    left: 50%;
+    bottom: 92px;
+    transform: translateX(-50%);
+    z-index: 80;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.88);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+    pointer-events: none;
+}
+#swipe-hint.show {
+    display: flex;
+    animation: swipe-hint-fade 3.6s ease forwards;
+}
+#swipe-hint .swipe-arrows {
+    display: inline-block;
+    animation: swipe-bob 1s ease-in-out infinite;
+}
+@keyframes swipe-bob {
+    0%, 100% { transform: translateX(-5px); }
+    50%      { transform: translateX(5px); }
+}
+@keyframes swipe-hint-fade {
+    0%   { opacity: 0; }
+    12%  { opacity: 1; }
+    82%  { opacity: 1; }
+    100% { opacity: 0; }
 }

@@ -202,6 +202,47 @@
                     </div>
                 </div>
 
+                <!-- Latest experience (mirror of SYS_LOG_01) -->
+                <div class="flex items-center justify-between mb-3 border-b border-outline-variant pb-2">
+                    <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim" data-key="latest_log_title"></h2>
+                    <button class="nav-btn flex items-center gap-1 font-label-sm text-[10px] uppercase text-on-surface-variant hover:text-primary-fixed-dim transition-colors" data-target="view-experience">
+                        <span data-key="latest_log_more"></span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4 relative group hover:border-primary-fixed-dim transition-colors mb-8">
+                    <div class="flex items-start justify-between gap-3 mb-2 border-b border-outline-variant/50 pb-1">
+                        <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim">SYS_LOG_01</span>
+                        <span class="font-label-sm text-[10px] uppercase border border-primary-fixed-dim text-primary-fixed-dim px-2 py-0.5 clip-corner" data-key="current_badge"></span>
+                    </div>
+                    <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="job_1_title"></h3>
+                    <div class="font-code-snippet text-xs text-primary-fixed-dim mb-1"><span data-key="job_1_company"></span> · <span data-key="job_1_period"></span></div>
+                    <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_1_description"></p>
+
+                    <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="responsibilities_title"></div>
+                    <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
+                        <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="job_1_resp_1"></span></li>
+                        <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="job_1_resp_2"></span></li>
+                        <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="job_1_resp_3"></span></li>
+                        <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="job_1_resp_4"></span></li>
+                    </ul>
+
+                    <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="achievements_title"></div>
+                    <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
+                        <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_1_ach_1"></span></li>
+                        <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_1_ach_2"></span></li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">Go (Golang)</span>
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">React</span>
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">Data Warehouse</span>
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">Claude Code</span>
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">n8n</span>
+                        <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim text-[10px] font-label-sm">SQL</span>
+                    </div>
+                </div>
+
                 <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="skills_title"></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
@@ -455,27 +496,35 @@
             </button>
         </div>
         <!-- Mobile bottom nav -->
-        <nav class="md:hidden grid grid-cols-4 items-stretch h-16 w-full bg-black" id="mobile-nav">
+        <nav class="md:hidden grid grid-cols-4 items-stretch h-20 w-full bg-black" id="mobile-nav">
             <a class="nav-btn flex flex-col items-center justify-center text-on-primary-fixed bg-primary-container p-1 border-t-2 border-primary-fixed-dim" data-target="view-overview">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
-                <span class="font-code-snippet text-[9px] mt-0.5 uppercase" data-key="nav_overview"></span>
+                <span class="font-code-snippet text-[10px] mt-1 uppercase w-full text-center truncate" data-key="nav_overview"></span>
             </a>
             <a class="nav-btn flex flex-col items-center justify-center text-primary-fixed-dim p-1 opacity-70 border-t-2 border-transparent" data-target="view-experience">
                 <span class="material-symbols-outlined">terminal</span>
-                <span class="font-code-snippet text-[9px] mt-0.5 uppercase" data-key="nav_logs"></span>
+                <span class="font-code-snippet text-[10px] mt-1 uppercase w-full text-center truncate" data-key="nav_logs_short"></span>
             </a>
             <a class="nav-btn flex flex-col items-center justify-center text-primary-fixed-dim p-1 opacity-70 border-t-2 border-transparent" data-target="view-education">
                 <span class="material-symbols-outlined">school</span>
-                <span class="font-code-snippet text-[9px] mt-0.5 uppercase" data-key="nav_academy"></span>
+                <span class="font-code-snippet text-[10px] mt-1 uppercase w-full text-center truncate" data-key="nav_academy_short"></span>
             </a>
             <a class="nav-btn flex flex-col items-center justify-center text-primary-fixed-dim p-1 opacity-70 border-t-2 border-transparent" data-target="view-contact">
                 <span class="material-symbols-outlined">connect_without_contact</span>
-                <span class="font-code-snippet text-[9px] mt-0.5 uppercase" data-key="nav_contact"></span>
+                <span class="font-code-snippet text-[10px] mt-1 uppercase w-full text-center truncate" data-key="nav_contact"></span>
             </a>
         </nav>
     </footer>
     </div>
     <!-- /app-shell -->
+
+    <!-- Swipe hint (shown once on first mobile visit) -->
+    <div id="swipe-hint" class="md:hidden" aria-hidden="true">
+        <span class="swipe-arrows">‹</span>
+        <span class="material-symbols-outlined text-[18px]">swipe</span>
+        <span>Swipe to change view</span>
+        <span class="swipe-arrows">›</span>
+    </div>
 
     <!-- Full-screen terminal -->
     <div id="terminal-fullscreen" style="display:none" class="fixed inset-0 z-[90] bg-black/95 flex-col font-code-snippet">

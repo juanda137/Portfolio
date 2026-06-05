@@ -290,4 +290,97 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', () => {
         switchView('view-' + location.hash.slice(1), false);
     });
+
+    // ===== realtime logs =====
+    const logsContainer = document.getElementById('realtime-logs');
+    function addSystemLog(message, type = 'info') {
+        if (!logsContainer) return;
+        const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+        const p = document.createElement('p');
+        let prefix = '[INFO]';
+        if (type === 'error') { prefix = '[ERR ]'; p.className = 'text-error'; }
+        else if (type === 'ok') { prefix = '[ OK ]'; p.className = 'text-primary-fixed-dim'; }
+        else if (message.startsWith('>')) { prefix = '[USER]'; p.className = 'text-secondary-fixed-dim'; }
+        p.textContent = `${prefix} ${time} - ${message}`;
+        logsContainer.appendChild(p);
+        logsContainer.scrollTop = logsContainer.scrollHeight;
+    }
+    window.addSystemLog = addSystemLog;
+
+    // Real boot sequence (honest facts about the profile).
+    const bootLines = [
+        ['Loading profile: Juan David Benavides', 'info'],
+        ['Role: Full Stack Developer & AI Data Engineer', 'info'],
+        ['Location: Bogotá, Colombia', 'info'],
+        ['Stack: Go · React · Node · Python · MongoDB', 'info'],
+        ['Status: Open to opportunities', 'ok']
+    ];
+    bootLines.forEach((line, i) => setTimeout(() => addSystemLog(line[0], line[1]), 350 * (i + 1)));
+
+    // Ambient terminal flavor.
+    const ambientEvents = [
+        'Scanning incoming packets...',
+        'Cache matrix updated.',
+        'Ping received from 192.168.1.104',
+        'Garbage collection executed. 12MB freed.',
+        'CPU thermal levels normal.'
+    ];
+    setInterval(() => {
+        if (Math.random() > 0.7) addSystemLog(ambientEvents[Math.floor(Math.random() * ambientEvents.length)]);
+    }, 5000);
+
+    // ===== animated counters =====
+    function animateCount(el, target, duration = 1000) {
+        const start = performance.now();
+        const step = (now) => {
+            const p = Math.min((now - start) / duration, 1);
+            el.textContent = Math.round(p * target);
+            if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }
+    document.querySelectorAll('.count-up').forEach(el => {
+        animateCount(el, parseInt(el.dataset.count, 10) || 0);
+    });
+    // Vital bars grow to their data-width after a tick so the transition runs.
+    requestAnimationFrame(() => {
+        document.querySelectorAll('.vital-bar').forEach(bar => {
+            bar.style.width = (bar.dataset.width || '0') + '%';
+        });
+    });
+
+    // ===== terminal command line =====
+    const cmdInput = document.getElementById('cmd-input');
+    const commandMap = {
+        home: 'view-overview', overview: 'view-overview',
+        experience: 'view-experience', logs: 'view-experience', projects: 'view-experience',
+        education: 'view-education', academy: 'view-education',
+        contact: 'view-contact'
+    };
+    if (cmdInput) {
+        cmdInput.addEventListener('keypress', function (e) {
+            if (e.key !== 'Enter') return;
+            const cmd = this.value.trim().toLowerCase();
+            this.value = '';
+            if (cmd === '') return;
+            addSystemLog('> ' + cmd);
+            if (cmd === 'help') {
+                addSystemLog("COMMANDS: overview, experience, education, contact, lang, clear, github, linkedin, help");
+            } else if (cmd === 'clear') {
+                logsContainer.innerHTML = '';
+                addSystemLog('Console cleared.', 'ok');
+            } else if (cmd === 'lang') {
+                toggleLang();
+                addSystemLog('Language switched.', 'ok');
+            } else if (cmd === 'github') {
+                window.open('https://github.com/juanda137', '_blank');
+            } else if (cmd === 'linkedin') {
+                window.open('https://www.linkedin.com/in/juan-david-benavides', '_blank');
+            } else if (commandMap[cmd]) {
+                switchView(commandMap[cmd]);
+            } else {
+                addSystemLog(`Command not found: ${cmd}. Type 'help'.`, 'error');
+            }
+        });
+    }
 });

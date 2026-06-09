@@ -33,8 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle_contact: "Establishing secure communication protocols...",
             // --- Profile / hero ---
             name: "Juan David Benavides",
-            hero_title: "Full Stack Developer & AI Data Engineer",
-            hero_subtitle: "Software Developer and AI Data Analyst specializing in AI-First solutions. I design and deploy AI agents, build high-scale architectures with Go (Golang), and develop full-stack applications with the MERN stack — delivering scalable, data-driven products in Agile environments.",
+            hero_title: "AI-First Software Developer & Data Analyst",
+            hero_subtitle: "AI-First Software Developer and Data Analyst focused on intelligent systems and high-scale architectures — from designing autonomous AI agents and custom skills to high-performance backends with Go (Golang) and the MERN stack.",
+            hero_about_2: "Currently at Bia, I architect an Enterprise Operations & Business Intelligence Platform and led the design of a multi-layered corporate Data Warehouse with a unified 'Gold Layer' single source of truth. I leverage tools like Claude Code, Gemini, and Codex to accelerate the SDLC — driven by transforming raw data into scalable corporate value.",
             hero_location: "Bogotá, Colombia",
             // --- Skills ---
             skills_title: "Skills & Technologies",
@@ -52,13 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
             job_1_title: "Growth, Automation & Data Architecture Platform",
             job_1_company: "Bia",
             job_1_period: "Nov 2025 – Present · Hybrid",
-            job_1_description: "Technical leadership in software and analytics solutions focused on business growth, process automation, and corporate data governance.",
-            job_1_resp_1: "Designed the platform architecture using Go (Golang) for the backend and React for the frontend, ensuring high availability and performance.",
-            job_1_resp_2: "Led the design and construction of a corporate Data Warehouse with a layered structure to centralize company-wide databases.",
-            job_1_resp_3: "Integrated real-time data streams and utilized Claude Code to optimize business logic and accelerate the SDLC.",
-            job_1_resp_4: "Developed advanced analytics modules transforming raw data into strategic daily performance insights.",
-            job_1_ach_1: "Built an automated business analysis system that significantly reduced data interpretation time for the Growth team.",
-            job_1_ach_2: "Created an interactive dashboard to detect anomalies and daily performance variations, enabling data-driven decision-making.",
+            job_1_description: "Technical leadership in the development of software and analytics solutions, focused on business growth, process automation, and corporate data governance.",
+            job_1_resp_1: "Conceptualized, designed, and deployed highly scalable microservices using Go (Golang), tailored for high-throughput, real-time data processing pipelines and concurrent service communication.",
+            job_1_resp_2: "Engineered a comprehensive, multi-layered corporate Data Warehouse using PostgreSQL, centralizing and structuring complex, fragmented datasets from all core business departments.",
+            job_1_resp_3: "Developed a robust enterprise business intelligence platform using React, architecting a modular interface with dedicated sections and nested sub-pages for every business unit, paired with a global overview dashboard and real-time data visualizations.",
+            job_1_resp_4: "Deeply embedded cutting-edge AI tools like Claude Code and Codex into the daily software development lifecycle to drastically accelerate sprint velocity, automate unit testing, and perform deep codebase refactorings.",
+            job_1_ach_1: "Eliminated enterprise-wide data silos by establishing a unified 'Gold Layer' data architecture, providing a single, trusted source of truth for all corporate decision-making and cross-departmental alignment.",
+            job_1_ach_2: "Consolidated scattered corporate metrics into a single, cohesive platform, delivering high-level macro overviews alongside granular, nested deep dives for every department, significantly accelerating data-driven strategic planning across the organization.",
+            job_1_ach_3: "Architected and automated an end-to-end data pipeline that ingests raw, real-time energy consumption metrics, performs automated analytical calculations, and dynamically generates detailed, client-ready PDF reports, directly enhancing customer value delivery.",
             job_2_title: "Cinema Management Platform",
             job_2_company: "Campuslands",
             job_2_period: "Nov 2024 – Aug 2025 · Bogotá",
@@ -129,8 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title_contact: "> ENLACE_COM.SH",
             subtitle_contact: "Estableciendo protocolos de comunicación segura...",
             name: "Juan David Benavides",
-            hero_title: "Desarrollador Full Stack & AI Data Engineer",
-            hero_subtitle: "Desarrollador de Software y AI Data Analyst especializado en soluciones IA-First. Diseño y despliego agentes de IA, construyo arquitecturas de alta escala con Go (Golang), y desarrollo aplicaciones full-stack con el stack MERN — entregando productos escalables y basados en datos en entornos ágiles.",
+            hero_title: "Desarrollador de Software AI-First & Data Analyst",
+            hero_subtitle: "Desarrollador de Software AI-First y Data Analyst enfocado en sistemas inteligentes y arquitecturas de alta escala — desde el diseño de agentes de IA autónomos y skills personalizadas hasta backends de alto rendimiento con Go (Golang) y el stack MERN.",
+            hero_about_2: "Actualmente en Bia, diseño la arquitectura de una Plataforma Empresarial de Operaciones y Business Intelligence, y lideré el diseño de un Data Warehouse corporativo multicapa con una fuente única de verdad ('Capa Gold'). Aprovecho herramientas como Claude Code, Gemini y Codex para acelerar el ciclo de desarrollo — motivado por transformar datos crudos en valor corporativo escalable.",
             hero_location: "Bogotá, Colombia",
             skills_title: "Habilidades y Tecnologías",
             ai_skills_title: "IA & Automatización",
@@ -147,12 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
             job_1_company: "Bia",
             job_1_period: "Nov 2025 – Presente · Híbrido",
             job_1_description: "Liderazgo técnico en el desarrollo de soluciones de software y analítica, centradas en el crecimiento del negocio, la automatización de procesos y la gobernanza de datos corporativos.",
-            job_1_resp_1: "Diseñé la arquitectura de la plataforma usando Go (Golang) para el backend y React para el frontend, garantizando alta disponibilidad y rendimiento.",
-            job_1_resp_2: "Lideré el diseño y construcción de un Data Warehouse corporativo con estructura por capas para centralizar las bases de datos de la compañía.",
-            job_1_resp_3: "Integré flujos de datos en tiempo real y utilicé Claude Code para optimizar la lógica de negocio y acelerar el ciclo de vida de desarrollo.",
-            job_1_resp_4: "Desarrollé módulos de analítica avanzada para transformar datos crudos en insights estratégicos de rendimiento diario.",
-            job_1_ach_1: "Desarrollé un sistema de análisis automático que redujo significativamente el tiempo de interpretación de datos para el equipo de Growth.",
-            job_1_ach_2: "Creé un panel de control interactivo para detectar anomalías y variaciones de rendimiento diario, facilitando la toma de decisiones basada en datos.",
+            job_1_resp_1: "Conceptualicé, diseñé y desplegué microservicios altamente escalables con Go (Golang), orientados a pipelines de procesamiento de datos en tiempo real de alto rendimiento y comunicación concurrente entre servicios.",
+            job_1_resp_2: "Diseñé un Data Warehouse corporativo integral de múltiples capas con PostgreSQL, centralizando y estructurando datos complejos y fragmentados de todos los departamentos clave del negocio.",
+            job_1_resp_3: "Desarrollé una robusta plataforma empresarial de business intelligence con React, con una interfaz modular de secciones dedicadas y subpáginas anidadas para cada unidad de negocio, junto con un dashboard global y visualizaciones de datos en tiempo real.",
+            job_1_resp_4: "Integré profundamente herramientas de IA de vanguardia como Claude Code y Codex en el ciclo de vida de desarrollo para acelerar drásticamente la velocidad de los sprints, automatizar pruebas unitarias y realizar refactorizaciones profundas del código.",
+            job_1_ach_1: "Eliminé los silos de datos a nivel empresarial estableciendo una arquitectura de datos unificada de 'Capa Gold', proporcionando una fuente única y confiable de verdad para la toma de decisiones corporativas y la alineación entre departamentos.",
+            job_1_ach_2: "Consolidé métricas corporativas dispersas en una única plataforma cohesiva, con vistas macro de alto nivel y análisis granulares anidados por departamento, acelerando significativamente la planificación estratégica basada en datos en toda la organización.",
+            job_1_ach_3: "Diseñé y automaticé un pipeline de datos end-to-end que ingiere métricas de consumo energético en tiempo real, realiza cálculos analíticos automatizados y genera dinámicamente reportes PDF detallados listos para el cliente, mejorando directamente la entrega de valor.",
             job_2_title: "Plataforma de Gestión de Cines",
             job_2_company: "Campuslands",
             job_2_period: "Nov 2024 – Ago 2025 · Bogotá",
@@ -320,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Real boot sequence (honest facts about the profile).
     const bootLines = [
         ['Loading profile: Juan David Benavides', 'info'],
-        ['Role: Full Stack Developer & AI Data Engineer', 'info'],
+        ['Role: AI-First Software Developer & Data Analyst', 'info'],
         ['Location: Bogotá, Colombia', 'info'],
         ['Stack: Go · React · Node · Python · MongoDB', 'info'],
         ['Status: Open to opportunities', 'ok']
@@ -505,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.open('https://www.linkedin.com/in/juan-david-benavides', '_blank');
                 break;
             case 'whoami':
-                addSystemLog('guest@JDB-OS — operated by Juan David Benavides · Full Stack Developer & AI Data Engineer.', 'ok');
+                addSystemLog('guest@JDB-OS — operated by Juan David Benavides · AI-First Software Developer & Data Analyst.', 'ok');
                 break;
             case 'ls':
                 addSystemLog('drwxr-xr-x  overview/  experience/  education/  contact/  secrets/');

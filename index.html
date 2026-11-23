@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JDB-OS // Juan David Benavides — AI-First Software Dev & Data Analyst</title>
+    <title>JDB-OS // Juan David Benavides — AI Engineer & Full Stack Developer</title>
     <link rel="icon" type="image/png" href="./images/favicon.png" />
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,6 +221,7 @@
                     </div>
                     <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="job_1_title"></h3>
                     <div class="font-code-snippet text-xs text-primary-fixed-dim mb-1"><span data-key="job_1_company"></span> · <span data-key="job_1_period"></span></div>
+                    <p class="font-code-snippet text-xs text-inverse-surface mb-1" data-key="job_1_project"></p>
                     <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_1_description"></p>
 
                     <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="responsibilities_title"></div>
@@ -250,16 +251,54 @@
 
                 <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="skills_title"></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
-                        <h3 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-3" data-key="ai_skills_title"></h3>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4 md:col-span-2">
+                        <h3 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-3" data-key="ai_eng_skills_title"></h3>
                         <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Claude Code</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Gemini</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">n8n</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Cursor</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Copilot</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Antigravity</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Spec-driven Dev</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">OpenAI API (GPT-4o, Vision)</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Gemini API</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">LangChain (LCEL, RunnableBranch, Structured Output)</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">RAG</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Multi-Agent Systems</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Multimodal AI</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Embeddings</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Hybrid Search (BM25 + RRF)</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Prompt Engineering</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Self-Consistency</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">LLM-as-Judge</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Guardrails</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
+                        <h3 class="font-label-sm text-label-sm uppercase text-secondary-fixed-dim mb-3" data-key="vector_skills_title"></h3>
+                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">ChromaDB</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">Langfuse (tracing, Score API)</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">tiktoken</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
+                        <h3 class="font-label-sm text-label-sm uppercase text-tertiary-fixed-dim mb-3" data-key="ai_skills_title"></h3>
+                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Claude Code</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Codex</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Cursor</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Copilot</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Antigravity</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">n8n</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Spec-driven Dev</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
+                        <h3 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-3" data-key="backend_skills_title"></h3>
+                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Python</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Go (Golang)</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Node.js</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Express.js</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">RESTful APIs</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Pydantic</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">JWT</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">bcrypt</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
@@ -271,31 +310,36 @@
                             <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">JavaScript ES6+</span>
                             <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">HTML5</span>
                             <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">CSS3</span>
-                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">Fetch API</span>
-                        </div>
-                    </div>
-                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
-                        <h3 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-3" data-key="backend_skills_title"></h3>
-                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Go (Golang)</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Node.js</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Express.js</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Python</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">RESTful APIs</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">JWT</span>
-                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">bcrypt</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
                         <h3 class="font-label-sm text-label-sm uppercase text-tertiary-fixed-dim mb-3" data-key="db_skills_title"></h3>
                         <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">PostgreSQL</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Data Warehousing (Gold Layer)</span>
                             <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">MongoDB</span>
                             <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">MySQL</span>
                             <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">SQL</span>
-                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Git</span>
-                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">GitHub</span>
-                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">Agile / Scrum</span>
-                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">MVC</span>
+                            <span class="px-2 py-1 bg-surface-variant text-tertiary-fixed-dim">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
+                        <h3 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-3" data-key="testing_skills_title"></h3>
+                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">pytest</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Jupyter</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">Git</span>
+                            <span class="px-2 py-1 bg-surface-variant text-primary-fixed-dim">GitHub</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4">
+                        <h3 class="font-label-sm text-label-sm uppercase text-secondary-fixed-dim mb-3" data-key="method_skills_title"></h3>
+                        <div class="flex flex-wrap gap-2 font-code-snippet text-xs">
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">Agile</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">Scrum</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">MVC</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">RBAC</span>
+                            <span class="px-2 py-1 bg-surface-variant text-secondary-fixed-dim">DTOs</span>
                         </div>
                     </div>
                 </div>
@@ -313,7 +357,8 @@
                         </div>
                         <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="job_1_title"></h3>
                         <div class="font-code-snippet text-xs text-primary-fixed-dim mb-1"><span data-key="job_1_company"></span> · <span data-key="job_1_period"></span></div>
-                        <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_1_description"></p>
+                        <p class="font-code-snippet text-xs text-inverse-surface mb-1" data-key="job_1_project"></p>
+                    <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_1_description"></p>
 
                         <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="responsibilities_title"></div>
                         <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
@@ -340,25 +385,60 @@
                         </div>
                     </div>
 
-                    <!-- SYS_LOG_02 : Campuslands cinema -->
+                    <!-- SYS_LOG_02 : SoyHenry AI Engineering projects -->
+                    <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4 relative group hover:border-primary-fixed-dim transition-colors">
+                        <div class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 border-b border-outline-variant/50 pb-1 inline-block">SYS_LOG_02</div>
+                        <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="henry_title"></h3>
+                        <div class="font-code-snippet text-xs text-primary-fixed-dim mb-1"><span data-key="henry_company"></span> · <span data-key="henry_period"></span></div>
+                        <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="henry_description"></p>
+
+                        <div class="space-y-4">
+                            <div class="border-l-2 border-primary-fixed-dim pl-3">
+                                <div class="font-code-snippet text-sm text-primary-fixed-dim font-bold" data-key="ai_p1_title"></div>
+                                <div class="font-label-sm text-[10px] uppercase text-on-surface-variant mb-2">GPT-4o Vision · LangChain · Pydantic · Langfuse</div>
+                                <ul class="space-y-1 font-code-snippet text-xs text-inverse-surface">
+                                    <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="ai_p1_b1"></span></li>
+                                    <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="ai_p1_b2"></span></li>
+                                    <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="ai_p1_b3"></span></li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-secondary-fixed-dim pl-3">
+                                <div class="font-code-snippet text-sm text-secondary-fixed-dim font-bold" data-key="ai_p2_title"></div>
+                                <div class="font-label-sm text-[10px] uppercase text-on-surface-variant mb-2">LangChain · ChromaDB · Langfuse</div>
+                                <ul class="space-y-1 font-code-snippet text-xs text-inverse-surface">
+                                    <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="ai_p2_b1"></span></li>
+                                    <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="ai_p2_b2"></span></li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-tertiary-fixed-dim pl-3">
+                                <div class="font-code-snippet text-sm text-tertiary-fixed-dim font-bold" data-key="ai_p3_title"></div>
+                                <div class="font-label-sm text-[10px] uppercase text-on-surface-variant mb-2">OpenAI & Gemini APIs · NumPy · tiktoken</div>
+                                <ul class="space-y-1 font-code-snippet text-xs text-inverse-surface">
+                                    <li class="flex gap-2"><span class="text-tertiary-fixed-dim">→</span><span data-key="ai_p3_b1"></span></li>
+                                    <li class="flex gap-2"><span class="text-tertiary-fixed-dim">→</span><span data-key="ai_p3_b2"></span></li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-primary-fixed-dim pl-3">
+                                <div class="font-code-snippet text-sm text-primary-fixed-dim font-bold" data-key="ai_p4_title"></div>
+                                <div class="font-label-sm text-[10px] uppercase text-on-surface-variant mb-2">Python · OpenAI & Gemini APIs · pytest</div>
+                                <ul class="space-y-1 font-code-snippet text-xs text-inverse-surface">
+                                    <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="ai_p4_b1"></span></li>
+                                    <li class="flex gap-2"><span class="text-primary-fixed-dim">→</span><span data-key="ai_p4_b2"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SYS_LOG_03 : Campuslands cinema -->
                     <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4 relative group hover:border-secondary-fixed-dim transition-colors">
-                        <div class="font-label-sm text-label-sm uppercase text-secondary-fixed-dim mb-2 border-b border-outline-variant/50 pb-1 inline-block">SYS_LOG_02</div>
+                        <div class="font-label-sm text-label-sm uppercase text-secondary-fixed-dim mb-2 border-b border-outline-variant/50 pb-1 inline-block">SYS_LOG_03</div>
                         <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="job_2_title"></h3>
                         <div class="font-code-snippet text-xs text-secondary-fixed-dim mb-1"><span data-key="job_2_company"></span> · <span data-key="job_2_period"></span></div>
                         <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_2_description"></p>
 
-                        <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="responsibilities_title"></div>
                         <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
                             <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="job_2_resp_1"></span></li>
                             <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="job_2_resp_2"></span></li>
-                            <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="job_2_resp_3"></span></li>
-                            <li class="flex gap-2"><span class="text-secondary-fixed-dim">→</span><span data-key="job_2_resp_4"></span></li>
-                        </ul>
-
-                        <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="achievements_title"></div>
-                        <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
-                            <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_2_ach_1"></span></li>
-                            <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_2_ach_2"></span></li>
                         </ul>
 
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -373,24 +453,16 @@
                         </a>
                     </div>
 
-                    <!-- SYS_LOG_03 : Coderhouse bakery -->
+                    <!-- SYS_LOG_04 : Coderhouse bakery -->
                     <div class="border border-outline-variant bg-[#0a0a0a] clip-corner p-4 relative group hover:border-tertiary-fixed-dim transition-colors">
-                        <div class="font-label-sm text-label-sm uppercase text-tertiary-fixed-dim mb-2 border-b border-outline-variant/50 pb-1 inline-block">SYS_LOG_03</div>
+                        <div class="font-label-sm text-label-sm uppercase text-tertiary-fixed-dim mb-2 border-b border-outline-variant/50 pb-1 inline-block">SYS_LOG_04</div>
                         <h3 class="font-headline-md text-lg text-inverse-surface mt-2" data-key="job_3_title"></h3>
                         <div class="font-code-snippet text-xs text-tertiary-fixed-dim mb-1"><span data-key="job_3_company"></span> · <span data-key="job_3_period"></span></div>
                         <p class="font-code-snippet text-xs text-on-surface-variant italic mb-4" data-key="job_3_description"></p>
 
-                        <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="responsibilities_title"></div>
                         <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
                             <li class="flex gap-2"><span class="text-tertiary-fixed-dim">→</span><span data-key="job_3_resp_1"></span></li>
                             <li class="flex gap-2"><span class="text-tertiary-fixed-dim">→</span><span data-key="job_3_resp_2"></span></li>
-                            <li class="flex gap-2"><span class="text-tertiary-fixed-dim">→</span><span data-key="job_3_resp_3"></span></li>
-                        </ul>
-
-                        <div class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-2" data-key="achievements_title"></div>
-                        <ul class="space-y-1 mb-4 font-code-snippet text-xs text-inverse-surface">
-                            <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_3_ach_1"></span></li>
-                            <li class="flex gap-2"><span class="text-tertiary-fixed-dim">★</span><span data-key="job_3_ach_2"></span></li>
                         </ul>
 
                         <div class="flex flex-wrap gap-2">
@@ -408,6 +480,14 @@
             <div class="view-content relative z-10 flex-1" id="view-education">
                 <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-4 border-b border-outline-variant pb-2" data-key="education_title"></h2>
                 <div class="space-y-4 font-code-snippet text-sm text-inverse-surface mb-10">
+                    <div class="flex items-start gap-4 border-l-2 border-tertiary-fixed-dim pl-4 py-2 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-tertiary-fixed-dim mt-1">psychology</span>
+                        <div>
+                            <div class="font-bold text-tertiary-fixed-dim" data-key="degree_0"></div>
+                            <div class="text-xs text-on-surface-variant mt-1" data-key="degree_0_place"></div>
+                            <div class="text-xs text-on-surface-variant/70" data-key="degree_0_period"></div>
+                        </div>
+                    </div>
                     <div class="flex items-start gap-4 border-l-2 border-primary-fixed-dim pl-4 py-2 hover:bg-surface-variant/30 transition-colors">
                         <span class="material-symbols-outlined text-primary-fixed-dim mt-1">school</span>
                         <div>
@@ -433,6 +513,18 @@
                     <img src="./images/javascript.png" alt="Certificado de JavaScript" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
                     <img src="./images/backend.png" alt="Certificado de Backend" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
                     <img src="./images/reactDiploma.png" alt="Certificado de React.js" class="w-full h-auto border border-outline-variant clip-corner hover:border-primary-fixed-dim transition-colors" />
+                </div>
+
+                <h2 class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mt-10 mb-4 border-b border-outline-variant pb-2" data-key="languages_title"></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-code-snippet text-sm">
+                    <div class="flex items-center gap-3 border border-outline-variant bg-[#0a0a0a] clip-corner p-3">
+                        <span class="material-symbols-outlined text-secondary-fixed-dim">translate</span>
+                        <span class="text-inverse-surface" data-key="lang_english"></span>
+                    </div>
+                    <div class="flex items-center gap-3 border border-outline-variant bg-[#0a0a0a] clip-corner p-3">
+                        <span class="material-symbols-outlined text-tertiary-fixed-dim">translate</span>
+                        <span class="text-inverse-surface" data-key="lang_spanish"></span>
+                    </div>
                 </div>
             </div>
 
@@ -472,7 +564,7 @@
             <div class="space-y-4 mb-8">
                 <div class="border border-outline-variant p-2 clip-corner">
                     <div class="font-label-sm text-xs text-on-surface-variant uppercase mb-1" data-key="stat_projects"></div>
-                    <div class="font-headline-md text-2xl text-primary-fixed-dim count-up" data-count="3">0</div>
+                    <div class="font-headline-md text-2xl text-primary-fixed-dim count-up" data-count="7">0</div>
                 </div>
                 <div class="border border-outline-variant p-2 clip-corner">
                     <div class="font-label-sm text-xs text-on-surface-variant uppercase mb-1" data-key="stat_certs"></div>
